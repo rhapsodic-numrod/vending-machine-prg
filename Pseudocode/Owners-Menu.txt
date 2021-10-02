@@ -3,19 +3,105 @@ Owner menu settings:
 #The application should prompt the owner for a login confirmation code after their have
 #enter the pin (this is used as a security measure kind of a two stage authentication).
 
-#Once logged in system will then offer the following options to the admin,
+DISPLAY "Enter the confirmation pin:"
+confirmation = USERINPUT
 
-#1. the privilege to restock/ add new items to the vending machine
+IF confirmation != confirmationCode THEN
+	DISPLAY "Incorrect password"
+	GOTO Landing Page
+ELSE
+	#Once logged in system will then offer the following options to the admin,
+	DISPLAY "What would you like to do?"
+	DISPLAY "1. restock/ add new items"
+	DISPLAY "2. change prices"
+	DISPLAY "3. Cash out/ cash in"
+	DISPLAY "4. print out summary of all items in stock"
+	DISPLAY "5. print out amount of cash"
+	DISPLAY "6. print out items that need restocking"
+	DISPLAY "7. EXIT"
+	DISPLAY "Enter a number"
+	
+	choice = INT(USERINPUT)
+	#1. the privilege to restock/ add new items to the vending machine
+	IF choice == 1
+		DISPLAY "Would you like to:"
+		DISPLAY "1. Restock"
+		DISPLAY "2. Add new item"
+		DISPLAY "3. Go back"
+		choice = INT(USERINPUT)
+		IF choice == 1
+			DISPLAY "Enter item id"
+			itemId = USERINPUT
+			
+			DISPLAY "Enter amount to be added"
+			toBeAdded = INT(USERINPUT)
+			
+			#TODO figure out how stock is stored
+			#Increase amount of stock
+			
+			DISPLAY "Process Succesfull"
+			GOTO Owner Page
+		IF choice == 2
+			DISPLAY "Enter item id"
+			itemId = USERINPUT
+			
+			DISPLAY "Enter item name"
+			itemName = USERINPUT
+			
+			DISPLAY "Enter itemPrice"
+			itemPrice = DOUBLE(USERINPUT)
+			
+			DISPLAY "Enter amount to be added"
+			toBeAdded = INT(USERINPUT)
+			
+			#TODO figure out how stock is stored
+			# Add to inventory
+			
+			DISPLAY "Process Succesfull"
+			
+			GOTO Owner Page
+		IF choice == 3
+			GOTO Owner Page
+			
+	#2. change prices,
+	ELSE IF choice == 2
+		# TODO DISPLAY ALL ITEMS
+		DISPLAY "Enter item id"
+		itemId = USERINPUT
+		
+		# TODO DISPLAY itemName, itemPrice
+		DISPLAY "Enter new price"
+		newPrice = DOUBLE(USERINPUT)
+		
+		DISPLAY "Are you sure you would like to change the price?"
+		DISPLAY "To continue press '*' and to cancel press '#'
+		choice = USERINPUT
+		
+		IF choice == "*"
+			itemPrice = newPrice
+			DISPLAY "Process Succesfull"
+			GOTO Owner Page
+			
+		ELSE IF choice == "#" 
+			GOTO Owner Page
+		
+	#3. Cash out certain amounts from machine, cash in certain amount,
+	ELSE IF choice == 3
+		DISPLAY "Would you like to:"
+		DISPLAY "1. Cash out"
+		DISPLAY "2. Cash in"
+		DISPLAY "3. Go back"
+		choice = INT(USERINPUT)
+		
+	#4. print out a summary of all items in stock, use JTABLE #(http://code.google.com/p/j-text-utils/wiki/UsingTextTable)
+	ELSE IF choice == 4
 
-#2. change prices,
+	#5. print out amount of cash in categories(How many 100s, 50s up to 5cs)
+	ELSE IF choice == 5
 
-#3. Cash out certain amounts from machine, cash in certain amount,
+	#6. print out only items that need restocking (all items below 25 need to be restocked, hence
+	#the quantity of 25 is the re-order level)
+	ELSE IF choice == 6
 
-#4. print out a summary of all items in stock, use JTABLE (http://code.google.com/p/j-text-utils/wiki/UsingTextTable)
-
-#5. print out amount of cash in categories(How many 100s, 50s up to 5cs)
-
-#6. print out only items that need restocking (all items below 25 need to be restocked, hence
-#the quantity of 25 is the re-order level)
-
-#7. exit,
+	#7. exit,
+	ELSE IF choice == 7
