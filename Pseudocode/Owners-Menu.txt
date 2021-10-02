@@ -1,0 +1,21 @@
+Owner menu settings:
+
+#The application should prompt the owner for a login confirmation code after their have
+#enter the pin (this is used as a security measure kind of a two stage authentication).
+
+#Once logged in system will then offer the following options to the admin,
+
+#1. the privilege to restock/ add new items to the vending machine
+
+#2. change prices,
+
+#3. Cash out certain amounts from machine, cash in certain amount,
+
+#4. print out a summary of all items in stock, use JTABLE (http://code.google.com/p/j-text-utils/wiki/UsingTextTable)
+
+#5. print out amount of cash in categories(How many 100s, 50s up to 5cs)
+
+#6. print out only items that need restocking (all items below 25 need to be restocked, hence
+#the quantity of 25 is the re-order level)
+
+#7. exit,
