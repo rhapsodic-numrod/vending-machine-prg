@@ -65,25 +65,43 @@ ELSE
 			
 	#2. change prices,
 	ELSE IF choice == 2
-		# TODO DISPLAY ALL ITEMS
+		# DISPLAY ALL ITEMS
+		DISPLAY "itemId|itemName|itemPrice|stock"
+		FOR i = 0 TO inventory.length
+			FOR j = 0 TO 4
+				DISPLAY inventory[i][j] + "|"
+			ENDFOR
+			DISPLAY newLine
+		ENDFOR
+
 		DISPLAY "Enter item id"
 		itemId = USERINPUT
-		
-		# TODO DISPLAY itemName, itemPrice
-		DISPLAY "Enter new price"
-		newPrice = DOUBLE(USERINPUT)
-		
-		DISPLAY "Are you sure you would like to change the price?"
-		DISPLAY "To continue press '*' and to cancel press '#'
-		choice = USERINPUT
-		
-		IF choice == "*"
-			itemPrice = newPrice
-			DISPLAY "Process Succesfull"
-			GOTO Owner Page
+		int index = -1
+		boolean isFound = false
+		# FIND ITEM
+		FOR i = 0 TO inventory.length
+			IF inventory[i][0] == itemId
+				index = i
+				isFound = true
+
+		# DISPLAY itemName, itemPrice
+		IF isFound
+			DISPLAY inventory[index][0] + "," + inventory[index][1]
+
+			DISPLAY "Enter new price"
+			newPrice = DOUBLE(USERINPUT)
 			
-		ELSE IF choice == "#" 
-			GOTO Owner Page
+			DISPLAY "Are you sure you would like to change the price?"
+			DISPLAY "To continue press '*' and to cancel press '#'
+			changeChoice = USERINPUT
+			
+			IF changeChoice == "*"
+				inventory[index][2] = DOUBLE_TO_STRING(newPrice)
+				DISPLAY "Process Succesfull"
+				GOTO Owner Page
+				
+			ELSE IF changeChoice == "#" 
+				GOTO Owner Page
 		
 	#3. Cash out certain amounts from machine, cash in certain amount,
 	ELSE IF choice == 3
