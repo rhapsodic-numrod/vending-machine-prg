@@ -144,6 +144,15 @@ ELSE
 	#the quantity of 25 is the re-order level)
 	ELSE IF choice == 6
 
+		FOR i = 0 TO inventory.length
+			IF STRING_TO_INT(inventory[i][3]) < 25 
+				DISPLAY "itemId|itemName|itemPrice|stock"
+				FOR j = 0 TO 4
+					DISPLAY inventory[i][j] + "|"
+				ENDFOR
+			DISPLAY newLine
+		ENDFOR
+
 	#7. exit,
 	ELSE IF choice == 7
 		GOTO Landing Page
