@@ -30,17 +30,30 @@ ELSE
 		DISPLAY "3. Go back"
 		restockAddChoice = INT(USERINPUT)
 		IF restockAddChoice == 1
+		#restocking
 			DISPLAY "Enter item id"
 			itemId = USERINPUT
 			
-			DISPLAY "Enter amount to be added"
-			toBeAdded = INT(USERINPUT)
-			
-			#TODO figure out how stock is stored
-			#Increase amount of stock
-			
-			DISPLAY "Process Succesfull"
-			GOTO Owner Page
+			int index = 0
+			boolean isFound = false
+			# FIND ITEM
+			FOR i = 0 TO inventory.length
+				IF inventory[i][0] == itemId
+					index = i
+					isFound = true
+
+			# DISPLAY itemName, itemPrice
+			IF isFound
+				DISPLAY "Enter amount to be added"
+				toBeAdded = INT(USERINPUT)
+				
+				#Increase amount of stock
+				currentStock = STRING_TO_INT(inventory[index][3])
+				newStock = currentStock + toBeAdded
+				inventory[index][3] = INT_TO_STRING(newStock)
+				
+				DISPLAY "Process Succesfull"
+				GOTO Owner Page
 		IF restockAddChoice == 2
 			DISPLAY "Enter item id"
 			itemId = USERINPUT
