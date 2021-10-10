@@ -95,7 +95,13 @@ ELSE
 		
 	#4. print out a summary of all items in stock, use JTABLE #(http://code.google.com/p/j-text-utils/wiki/UsingTextTable)
 	ELSE IF choice == 4
-
+		DISPLAY "itemId|itemName|itemPrice|stock"
+		FOR i = 0 TO inventory.length
+			FOR j = 0 TO 4
+				DISPLAY inventory[i][j] + "|"
+			ENDFOR
+			DISPLAY newLine
+		ENDFOR
 	#5. print out amount of cash in categories(How many 100s, 50s up to 5cs)
 	ELSE IF choice == 5
 
