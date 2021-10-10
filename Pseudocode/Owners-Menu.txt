@@ -55,24 +55,28 @@ ELSE
 				DISPLAY "Process Succesfull"
 				GOTO Owner Page
 		IF restockAddChoice == 2
-			DISPLAY "Enter item id"
-			itemId = USERINPUT
-			
-			DISPLAY "Enter item name"
-			itemName = USERINPUT
-			
-			DISPLAY "Enter itemPrice"
-			itemPrice = DOUBLE(USERINPUT)
-			
-			DISPLAY "Enter amount to be added"
-			toBeAdded = INT(USERINPUT)
-			
-			#TODO figure out how stock is stored
-			# Add to inventory
-			
-			DISPLAY "Process Succesfull"
-			
-			GOTO Owner Page
+		# Add new item
+			int previousAddPos = 0
+			WHILE previousAddPos < inventory.length
+				DISPLAY "Enter item id"
+				itemId = USERINPUT
+				
+				DISPLAY "Enter item name"
+				itemName = USERINPUT
+				
+				DISPLAY "Enter itemPrice"
+				itemPrice = DOUBLE(USERINPUT)
+				
+				DISPLAY "Enter amount to be added"
+				toBeAdded = USERINPUT
+				
+				String[] newItem = {itemId, itemName, itemPrice, toBeAdded}
+				# Add to inventory
+				inventory[previousAddPos + 1] = newItem
+				previousAddPos += 1
+				DISPLAY "Process Succesfull"
+				BREAK
+			GOTO Owner Page	
 		IF restockAddChoice == 3
 			GOTO Owner Page
 			
