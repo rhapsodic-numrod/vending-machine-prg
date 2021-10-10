@@ -28,8 +28,8 @@ ELSE
 		DISPLAY "1. Restock"
 		DISPLAY "2. Add new item"
 		DISPLAY "3. Go back"
-		choice = INT(USERINPUT)
-		IF choice == 1
+		restockAddChoice = INT(USERINPUT)
+		IF restockAddChoice == 1
 			DISPLAY "Enter item id"
 			itemId = USERINPUT
 			
@@ -41,7 +41,7 @@ ELSE
 			
 			DISPLAY "Process Succesfull"
 			GOTO Owner Page
-		IF choice == 2
+		IF restockAddChoice == 2
 			DISPLAY "Enter item id"
 			itemId = USERINPUT
 			
@@ -60,7 +60,7 @@ ELSE
 			DISPLAY "Process Succesfull"
 			
 			GOTO Owner Page
-		IF choice == 3
+		IF restockAddChoice == 3
 			GOTO Owner Page
 			
 	#2. change prices,
@@ -105,3 +105,4 @@ ELSE
 
 	#7. exit,
 	ELSE IF choice == 7
+		GOTO Landing Page
