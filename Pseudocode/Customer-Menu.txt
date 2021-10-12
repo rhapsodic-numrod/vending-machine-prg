@@ -1,0 +1,142 @@
+Customer Menu 
+
+	Change Calculation
+	Receipt generation 
+	Items
+
+Pseudocode:
+
+  Int itemCode, QTY, itemsWanted, item
+  String itemName	
+  Double price, total, itemsPrice, payment
+
+Function choice
+Start  
+   Display name of items (itemName) and code for items(itemCode)
+   Prompt user to choose number of items wanted (numWanted)
+For i <= numWanted
+   Enter itemCode
+   Display name of item chosen 
+   Display price of item
+   Enter quantity of items(QTY)
+  If QTY >= 1 AND QTY <= itemStock[i]
+    Calculate price of items chosen
+    ItemsPrice = price * QTY
+    Count[i] = count + 1
+    Total = sum of itemsPrice for items bought 
+    Display total
+   End if
+ End for
+End choice 
+  
+   
+Function change
+Start
+ Input amount paid (payment) 
+   Calculate change 
+   change = payment - total 
+   Display change    
+For change >= 0
+    Changed = change * 100
+
+ If (money[0] >= 1) AND (money[0] <= money[0].length)
+     Hundreds = changed/10000
+     Changed = changed%10000
+     Money[0] = money[0] – hundreds
+     Print “Remaining number of hundreds is” + money[0]
+ Else if money[0] == 0 AND (money[1] >=1 AND money[1] <= money[1].length)
+     Hundreds = changed/10000
+     Fifties = hundreds*2
+     Changed = (changed%10000)*2
+     Money[1] = money[1] – fifties
+     Print “There are no hundreds in the system left. Please restock.
+                  Remaining number of fifties is” + money[1]
+  End if
+ End if
+
+If money[2] == 0 AND money[2] <= money[2].length
+    Tens = changed/1000
+    Changed = changed%1000
+    Money[2] = money[2] – tens
+    Print “Remaining number of tens is” + money[2]
+Else if money[2] == 0 AND (money[3] >= 1 AND money[3] <= money[3].length)
+    Tens = changed/1000
+    fives = tens*2
+    Changed = (changed%1000)*2
+    Money[3] = money[3] – fives
+    Print “ There are no tens in the system left. Please restock.
+              Remaining number of fives is” + money[3]
+  End if
+ End if
+
+If money[3] >= 1 AND money[3] <= money[3].length 
+    Fives = changed/500
+    Changed = changed%500
+    Money[3] = money[3] – fives
+    Print “Remaining number of fives is” + money[3] 
+Else if money[3] == 0 AND (money[4] >= 1 AND money[4] <= money[4].length)
+    Fives = changed/500
+    Ones = fives*5
+    Changed = (changed%500)*5
+    Money[4] = money[4] – ones
+    Print “There are no fives in the system left. Please restock
+               Remaining number of ones is” + money[4]
+   End if
+ End if
+
+If money[4] >= 1 AND money[4] <= money[4].length
+    Ones = changed/100
+    Changed = changed%100
+    Money[4] = money[4] – ones
+    Print “Remaining number of ones is” + money[4]
+Else if money[4] == 0 AND (money[5]c >= 1 AND money[5] <= money[5].length)
+    Ones = changed/100
+    TenC = ones*10
+    Changed = (changed%100)*10
+    Money[5] = money[5] – tenC
+    Print “There are no ones in the system left. Please restock
+               Remaining number of ten cents is” + money[5]
+  End if 
+ End if
+
+If money[5] >= 1 AND money[5] <= money[5].length
+    TenC = changed/10
+    Changed = changed%10
+    Money[5] = money[5] – tenC
+    Print “Remaining number of ten cents is” + money[5]
+Else if money[5] == 0 AND (money[6] >= 1 AND money[6] <= money[6].length)
+     TenC = changed/10
+      FiveC = tenC*2
+      Changed = (changed%10)*2
+      Money[6] = money[6] – fiveC
+      Print “There are no ten cents in the system left. Please restock.
+                 Remaining number of five cents is” + money[6]
+
+If money[6] >= 1 AND money[6] <= money[6].length
+    FiveC = changed/5
+    Changed = changed%5
+    Money[6] = money[6] – fiveC
+    Print “Remaining number of five cents is” + money[6]
+End if
+
+     Display “Your change” + change+ “is distributed as follows: “ + “N$100 X” + hundreds+ “N$50 X” + fifties + “N$10 X” + tens + “N$5 X” + fives + “N$1 X “ + ones + “10cents X” + tenC + “5cents X” + fiveC 
+End change
+
+Function receipt    
+Print receipt 
+  Display Company details(
+  Company name
+  Company code   
+  Company location)
+  Prompt for item name, item quantity, item price 
+  Display item name, item quantity, item price 
+  Display total
+  Display payment 
+  Display change
+End receipt
+      
+Start    
+ call: choice
+ call: change
+ call: receipt
+End
