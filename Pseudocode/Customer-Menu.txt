@@ -6,14 +6,15 @@ Customer Menu
 
 Pseudocode:
 
-  Int itemCode, QTY, itemsWanted, item
-  String itemName	
-  Double price, total, itemsPrice, payment
+  Int itemCode[30], QTY, itemsWanted, i, itemStock[30], money[7]
+  String itemName[30]	
+  Double price, total, itemPrice[30], payment
 
 Function choice
 Start  
    Display name of items (itemName) and code for items(itemCode)
    Prompt user to choose number of items wanted (numWanted)
+   
 For i <= numWanted
    Enter itemCode
    Display name of item chosen 
