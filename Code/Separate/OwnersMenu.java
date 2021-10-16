@@ -1,20 +1,20 @@
-package OwnersMenu;
+
 import java.util.Scanner;
 
-import javax.sound.midi.Soundbank;
 class OwnersMenu{
 
     public static void printOwnersMenu(){
-        System.out.println("--- Owners Menu ---");
+        System.out.println("----------------------");
+        System.out.println("---- Owners Menu ----");
         System.out.println("----------------------");
         System.out.println("What would you like to do?");
-        System.out.println("1. restock/add new items");
-        System.out.println("2. change prices");
-        System.out.println("3. Cash out/ cash in");
-        System.out.println("4. print out summary of all items in stock");
-        System.out.println("5. print out amount of cash");
-        System.out.println("6. print out items that need restocking");
-        System.out.println("7. EXIT");
+        System.out.println("[1] Restock/Add new items");
+        System.out.println("[2] Change prices");
+        System.out.println("[3] Cash out/ cash in");
+        System.out.println("[4] Print out summary of all items in stock");
+        System.out.println("[5] Print out amount of cash");
+        System.out.println("[6] Print out items that need restocking");
+        System.out.println("[7] EXIT");
         System.out.print("Enter a number: ");
     }
 
@@ -31,6 +31,16 @@ class OwnersMenu{
         }
         return indexOfItem;
     }
+
+    public static void printAllItems(String[][] items, int lastRow, int columLen){
+        System.out.println("Item ID\tItem Name\tItem Price\tStock Available");
+        for (int i = 0; i <= lastRow; i++){
+            for (int j = 0; j < columLen; j++){
+                System.out.print(items[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
     public static void main(String[] args){
         int id = 0, name = 1, price = 2, stock = 3, end = 0,rows = 20, cols = 4;
         String[][] inventory = new String[rows][cols];
@@ -46,9 +56,9 @@ class OwnersMenu{
                 case 1:{
                     System.out.println("-------------------");
                     System.out.println("Would you like to:");
-                    System.out.println("1. Restock");
-                    System.out.println("2. Add a new item");
-                    System.out.println("3. Go back");
+                    System.out.println("[1] Restock");
+                    System.out.println("[2] Add a new item");
+                    System.out.println("[3] Go back");
                     int addRestockChoice = input.nextInt();
                     switch (addRestockChoice){
                         case 1:{
@@ -79,9 +89,30 @@ class OwnersMenu{
                             }
                         } case 2:{
                             System.out.println("add new");
-                            break;
+                            // Only add if the array is not full
+                            if (end + 1 != rows){
+                                // Get item information
+                                System.out.print("Enter the item ID: ");
+                                String newItemID = input.next();
+                                System.out.print("Enter the item name: ");
+                                String newItemName = input.next();
+                                System.out.print("Enter the item price: ");
+                                String newItemPrice = input.next();
+                                System.out.print("Enter the ammount to be added: ");
+                                String newItemStock = input.next();
+                                // Add new item information to an array
+                                String[] newItem = {newItemID, newItemName, newItemPrice, newItemStock};
+                                // Add new item array to the inventory
+                                inventory[end + 1] = newItem;
+                                // Increase the end
+                                end++;
+                                System.out.println("Process Successfull :)");
+                                break;
+                            } else{
+                                System.out.println("Unfortunately inventory is full cannot add any more items");
+                                break;
+                            }
                         } case 3:{
-                            System.out.println("go back");
                             break;
                         } 
                     }
@@ -94,6 +125,8 @@ class OwnersMenu{
                     break;
                 } case 4:{
                     System.out.println("print all");
+                    printAllItems(inventory, end, cols);
+                    System.out.print("[1]")
                     break;
                 } case 5:{
                     System.out.println("print all cash");
