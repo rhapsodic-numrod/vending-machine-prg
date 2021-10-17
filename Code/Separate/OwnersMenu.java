@@ -92,12 +92,16 @@ class OwnersMenu{
                             // Only add if the array is not full
                             if (end + 1 != rows){
                                 // Get item information
+                                // FIXME: Item name is being skipped when entering new data
                                 System.out.print("Enter the item ID: ");
                                 String newItemID = input.next();
+
                                 System.out.print("Enter the item name: ");
-                                String newItemName = input.next();
+                                String newItemName = input.nextLine();
+
                                 System.out.print("Enter the item price: ");
                                 String newItemPrice = input.next();
+                                
                                 System.out.print("Enter the ammount to be added: ");
                                 String newItemStock = input.next();
                                 // Add new item information to an array
@@ -119,27 +123,74 @@ class OwnersMenu{
                     break;
                 } case 2:{
                     System.out.println("change price");
+                    // Display all items
+                    printAllItems(inventory, end, cols);
+                    while(true){
+                        // Get the item information
+                        System.out.print("Enter item id: ");
+                        String itemID = input.nextLine();
+                        // Find the item
+                        int itemRow = findItem(inventory, itemID);
+                        if (itemRow == -1){
+                            System.out.println("Item does not exist, Enter ID again");
+                            // Onwer will have to re-enter the item ID
+                            continue;
+                        } else {
+                            int changePriceChoice = 0;
+                            while(changePriceChoice != 1){
+                                System.out.printf("Item Name: %s, Current Price: %s%n", inventory[itemRow][name], inventory[itemRow][price]);
+                                // Get new price
+                                System.out.print("Enter new price: ");
+                                String changedPrice = input.next();
+                                // Ask if user wants to continue
+                                System.out.println("[1] Go back\t[2] Continue");
+                                changePriceChoice = input.nextInt();
+
+                                if (changePriceChoice == 1){
+                                    System.out.println("O_O");
+                                    break;
+                                } else if (changePriceChoice == 2) {
+                                    // Change the price from the row to the new price
+                                    inventory[itemRow][price] = changedPrice;
+                                    System.out.printf("Item Name: %s, New Price: %s%n", inventory[itemRow][name], inventory[itemRow][price]);
+                                    System.out.println("Process Succsesfull :)");
+                                    break;
+                                } else {
+                                    System.out.println("[1] Go back\t[2] Continue");
+                                    continue;
+                                }
+                            } 
+                            break;
+                        }
+                    }
                     break;
                 } case 3:{
                     System.out.println("cash in /out");
                     break;
                 } case 4:{
+                    // TODO: Make this display thing look nice coz rn naaaah
                     System.out.println("print all");
+                    int printChoice = 0;
+                    do{
                     printAllItems(inventory, end, cols);
-                    System.out.print("[1]")
+                    System.out.println("[1] Go back");
+                    printChoice = input.nextInt();
+                    } while (printChoice != 1);
                     break;
                 } case 5:{
                     System.out.println("print all cash");
+                    // TODO: Finish print all cash section
                     break;
                 } case 6:{
                     System.out.println("need restock");
+                    // TODO: Finish need restock section
                     break;
                 } case 7:{
                     System.out.println("Goodbye :)");
                     break;
-                }// } default:{
-                //     System.out.println("Enter from numbers 1-7");
-                // } 
+                } default:{
+                    System.out.println("Enter from numbers 1-7");
+                } 
             }
         } while(ownersMenuChoice != 7);
         input.close();
