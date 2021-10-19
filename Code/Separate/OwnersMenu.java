@@ -44,8 +44,24 @@ class OwnersMenu{
     public static void main(String[] args){
         int id = 0, name = 1, price = 2, stock = 3, end = 0,rows = 20, cols = 4;
         String[][] inventory = new String[rows][cols];
-        String[] testItem = {"12AB", "Chips", "10", "20"};
-        inventory[end] = testItem;
+        // Adding test items
+        String[] testItem1 = {"12AB", "Chips", "10.00", "20"};
+        String[] testItem2 = {"92AB", "Sour gums", "1.00", "2"};
+        String[] testItem3 = {"10AB", "Licorice", "2.50", "50"};
+        String[] testItem4 = {"12CD", "Bubblegum", "0.50", "70"};
+        String[] testItem5 = {"CLB2", "Stokkies", "1.50", "10"};
+        String[] testItem6 = {"D01A", "Coke", "10", "26"};
+        inventory[end] = testItem1;
+        end++;
+        inventory[end] = testItem2;
+        end++;
+        inventory[end] = testItem3;
+        end++;
+        inventory[end] = testItem4;
+        end++;
+        inventory[end] = testItem5;
+        end++;
+        inventory[end] = testItem6;
         Scanner input = new Scanner(System.in);
         int ownersMenuChoice = -1;
         do{
@@ -183,6 +199,21 @@ class OwnersMenu{
                     break;
                 } case 6:{
                     System.out.println("need restock");
+                    int printRestockChoice = 0;
+                    do{
+                    System.out.println("Item ID\tItem name\tItem Price\tStock Availabe");
+                    for (int i = 0; i < end; i++){
+                        int stockAvailable = Integer.parseInt(inventory[i][stock]);
+                        if (stockAvailable <= 25){
+                            for (int j = 0; j < cols; j++){
+                                System.out.print(inventory[i][j] + "\t");
+                            }
+                        }
+                        System.out.println();
+                    }
+                    System.out.println("[1] Go back");
+                    printRestockChoice = input.nextInt();
+                    } while (printRestockChoice != 1);
                     // TODO: Finish need restock section
                     break;
                 } case 7:{
