@@ -1,26 +1,70 @@
 import java.util.*;
 public class iTems {
-     public static void main(String[] args) {
-        int id = 0, name = 1, price = 2, stock = 3, end = 0,rows = 20, cols = 4;
+    public static void main(String[] args) {
+        int id = 0, name = 1, price = 2, stock = 3, end = -1,rows = 20, cols = 4;
         String[][] inventory = new String[rows][cols];
-        // Adding test items
-        String[] testItem1 = {"12AB", "Chips", "10.00", "20"};
-        String[] testItem2 = {"92AB", "Sour gums", "1.00", "2"};
-        String[] testItem3 = {"10AB", "Licorice", "2.50", "50"};
-        String[] testItem4 = {"12CD", "Bubblegum", "0.50", "70"};
-        String[] testItem5 = {"CLB2", "Stokkies", "1.50", "10"};
-        String[] testItem6 = {"D01A", "Coke", "10", "26"};
-        inventory[end] = testItem1;
+        /// Adding base items
+        String[] Item0 = {"C01", "Simba Salt and Vinegar Chips 132g", "15.00", "6"};
+        String[] Item1 = {"C02", "Simba Chilli Biltong Chips 132g", "15.00", "15"};
+        String[] Item2 = {"C03", "Simba Smoked Beef Chips 132g", "15.00", "2"};
+        String[] Item3 = {"C04", "Lay's Classic Chips 120g", "15.00", "24"};
+        String[] Item4 = {"C05", "Lay's Thai Sweet Chilli Chips 120g", "15.00", "56"};
+        String[] Item5 = {"C06", "Lay's Caribbean Onion & Balsamic Chips 120g", "15.00", "26"};
+        String[] Item6 = {"C07", "Doritos Sweet Chilli Pepper Corn Chips 150g", "15.00", "70"};
+        String[] Item7 = {"S01", "Nestle Aero Peppermint Chocolate Slab 85g", "10", "26"};
+        String[] Item8 = {"S02", "Snickers Duo Chocolate Bar 80g", "1.00", "2"};
+        String[] Item9 = {"S03", "Maynards Jelly Babies 125g", "2.50", "19"};
+        String[] Item10 = {"S04", "Nestle KitKat 11 Finger Dark Chocolate 135g", "10", "30"};
+        String[] Item11 = {"S05", "M&M's Peanut Chocolate 100g", "10", "26"};
+        String[] Item12 = {"D01", "Mineral Water 500ml", "11.00", "6"};
+        String[] Item13 = {"D02", "Natural Water 500ml", "11.00", "20"};
+        String[] Item14 = {"D03", "Powerade Island Burst 500ml", "12.00", "10"};
+        String[] Item15 = {"D04", "Coke 500ml", "12.00", "26"};
+        String[] Item16 = {"D05", "Fanta Grape 500ml", "12.00", "8"};
+        String[] Item17 = {"D06", "Fanta Orange 500ml", "12.00", "26"};
+        String[] Item18 = {"D07", "Liqui-Fruit Litchi Fruit Juice Box 250ml", "10", "6"};
+        String[] Item19 = {"D08", "Liqui-Fruit 100% Berry Blaze Fruit Juice Box 250ml", "10", "26"};
+
         end++;
-        inventory[end] = testItem2;
+        inventory[end] = Item0;
         end++;
-        inventory[end] = testItem3;
+        inventory[end] = Item1;
         end++;
-        inventory[end] = testItem4;
+        inventory[end] = Item2;
         end++;
-        inventory[end] = testItem5;
+        inventory[end] = Item3;
         end++;
-        inventory[end] = testItem6;
+        inventory[end] = Item4;
+        end++;
+        inventory[end] = Item5;
+        end++;
+        inventory[end] = Item6;
+        end++;
+        inventory[end] = Item7;
+        end++;
+        inventory[end] = Item8;
+        end++;
+        inventory[end] = Item9;
+        end++;
+        inventory[end] = Item10;
+        end++;
+        inventory[end] = Item11;
+        end++;
+        inventory[end] = Item12;
+        end++;
+        inventory[end] = Item13;
+        end++;
+        inventory[end] = Item14;
+        end++;
+        inventory[end] = Item15;
+        end++;
+        inventory[end] = Item16;
+        end++;
+        inventory[end] = Item17;
+        end++;
+        inventory[end] = Item18;
+        end++;
+        inventory[end] = Item19;
 
         Scanner rj = new Scanner(System.in);
 
@@ -32,7 +76,7 @@ public class iTems {
             System.out.println("Enter item code: ");
             int x = rj.nextInt();
 
-            System.out.println("Item selected: " +);
+            System.out.println("Item selected: " );
 
             System.out.println("Enter quantity of item: ");
             int QTY = rj.nextInt();
