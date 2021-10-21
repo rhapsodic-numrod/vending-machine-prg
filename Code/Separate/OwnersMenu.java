@@ -244,7 +244,7 @@ class OwnersMenu{
                     // TODO: Finish print all cash section
                     break;
                 } case 6:{
-                    // TODO: Make restock section look better
+                    // TODO: Make restock section look better and remove extra empty lines
                     System.out.println("need restock");
                     int printRestockChoice = 0;
                     do{
