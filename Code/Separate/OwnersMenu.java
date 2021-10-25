@@ -153,17 +153,16 @@ class OwnersMenu{
                             // Only add if the inventory is not full
                             if (end + 1 != rows){
                                 // Get item information
-                                // FIXME: Item name is being skipped when entering new data
                                 System.out.print("Enter the item ID: ");
                                 String newItemID = input.next();
 
-                                System.out.print("%nEnter the item name: ");
-                                String newItemName = input.nextLine();
+                                System.out.print("Enter the item name: ");
+                                String newItemName = input.next();
 
-                                System.out.print("%nEnter the item price: ");
+                                System.out.print("Enter the item price: ");
                                 String newItemPrice = input.next();
                                 
-                                System.out.print("%nEnter the ammount to be added: ");
+                                System.out.print("Enter the ammount to be added: ");
                                 String newItemStock = input.next();
                                 // Add new item information to an inventory
                                 String[] newItem = {newItemID, newItemName, newItemPrice, newItemStock};
