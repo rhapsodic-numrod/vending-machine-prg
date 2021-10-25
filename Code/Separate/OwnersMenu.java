@@ -26,7 +26,6 @@ class OwnersMenu{
                 break;
             } else{
                 indexOfItem = -1;
-                break;
             }
         }
         return indexOfItem;
