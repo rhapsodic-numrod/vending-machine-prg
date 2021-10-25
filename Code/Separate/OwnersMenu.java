@@ -227,6 +227,7 @@ class OwnersMenu{
                     }
                     break;
                 } case 3:{
+			// TODO: Finish Cash in Cash out section (Grant)
                     System.out.println("cash in /out");
                     break;
                 } case 4:{
@@ -241,7 +242,7 @@ class OwnersMenu{
                     break;
                 } case 5:{
                     System.out.println("print all cash");
-                    // TODO: Finish print all cash section
+                    // TODO: Finish print all cash section (Grant)
                     break;
                 } case 6:{
                     // TODO: Make restock section look better
