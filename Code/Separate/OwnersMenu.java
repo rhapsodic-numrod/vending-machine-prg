@@ -244,7 +244,7 @@ class OwnersMenu{
                     // TODO: Finish print all cash section
                     break;
                 } case 6:{
-                    // TODO: Make restock section look better and remove extra empty lines
+                    // TODO: Make restock section look better
                     System.out.println("need restock");
                     int printRestockChoice = 0;
                     do{
@@ -255,8 +255,8 @@ class OwnersMenu{
                             for (int j = 0; j < cols; j++){
                                 System.out.print(inventory[i][j] + "\t");
                             }
+			    System.out.println();
                         }
-                        System.out.println();
                     }
                     System.out.println("[1] Go back");
                     printRestockChoice = input.nextInt();
