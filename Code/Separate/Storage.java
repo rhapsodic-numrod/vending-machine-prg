@@ -1,4 +1,5 @@
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Storage {
@@ -17,138 +18,138 @@ public class Storage {
             System.out.println("Enter number: ");
         }
 
-        public static void printAllcash ( double[][] cashin, int lastRow, int columLen){
-            System.out.println("TwoHundred  " + "OneHundred  " + "Fifty       " + "Thirty      " + "Twenty      " + "Ten         " +
-                    "Five        " + "One         " + "FiftyCent   " + "TenCent     " + "FiveCent    ");
-            System.out.println("----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ");
-            for (int i = 0; i <= lastRow; i++) {
-                for (int j = 0; j < columLen; j++) {
-                    System.out.print(cashin[i][j] + "         ");
-                }
-                System.out.println();
+    public static void printAllcash ( double[] cashin, int lastRow, int columLen){
+        System.out.println(" ");
+        System.out.println("N$ 200 :    " + "N$ 100 :    " + "N$ 50 :     " + "N$ 30 :     " + "N$ 20 :     " + "N$ 10 :     " +
+                "N$ 5 :      " + "N$ 1 :      " + "50c :       " + "10c :       " + "5c :       ");
+        System.out.println("----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ");
+            for (int j = 0; j < columLen; j++) {
+                System.out.print(cashin[j] + "         ");
+
             }
+        System.out.println(" ");
+            System.out.println();
         }
 
-        public static void main (String[]args){
-            int th, oh, ft, tht, twt, t, f, o, ftc, tc, fc;
 
-            int TwoHundred = 0, OneHundred = 1, Fifty = 2, Thirty = 3, Twenty = 4, Ten = 5, Five = 6, One = 7, FiftyCent = 8, TenCent = 9, FiveCent = 10, end = 0, rows = 1, cols = 11;
-            double[][] money = new double[rows][cols];
+    public static void main (String[]args){
+        int th, oh, ft, tht, twt, t, f, o, ftc, tc, fc;
 
-            Scanner keybrd = new Scanner(System.in);
-            int choice = -1;
-            do {
-                printOwnersMenu();
-                choice = keybrd.nextInt();
-                switch (choice) {
-                    case 1: {
-                        System.out.println("[1] Cash in ");
-                        System.out.println("[2] Cash out");
-                        System.out.println("[3] Back");
-                        int choice1 = keybrd.nextInt();
-                        switch (choice1) {
-                            case 1: {
+        int moneyEnd = 0, cols = 11;
+        double[] money = new double[cols];
 
-                                System.out.println("---------------------------------------------------------------");
-                                System.out.println("Enter the number of how much of notes and coins there should be");
-                                System.out.println("for example: " + "N$ 200: \n" + "2");
-                                System.out.println("---------------------------------------------------------------");
-                                System.out.println("N$ 200: ");
-                                th = keybrd.nextInt();
+        Scanner keybrd = new Scanner(System.in);
+        int choice = -1;
+        do {
+            printOwnersMenu();
+            choice = keybrd.nextInt();
+            switch (choice) {
+                case 1: {
+                    System.out.println("[1] Cash in ");
+                    System.out.println("[2] Cash out");
+                    System.out.println("[3] Back");
+                    int choice1 = keybrd.nextInt();
+                    switch (choice1) {
+                        case 1: {
 
-                                System.out.println("N$ 100: ");
-                                oh = keybrd.nextInt();
+                            System.out.println("---------------------------------------------------------------");
+                            System.out.println("Enter the number of how much of notes and coins there should be");
+                            System.out.println("for example: " + "N$ 200: \n" + "2");
+                            System.out.println("---------------------------------------------------------------");
+                            System.out.println("N$ 200: ");
+                            th = keybrd.nextInt();
 
-                                System.out.println("N$ 50: ");
-                                ft = keybrd.nextInt();
+                            System.out.println("N$ 100: ");
+                            oh = keybrd.nextInt();
 
-                                System.out.println("N$ 30: ");
-                                tht = keybrd.nextInt();
+                            System.out.println("N$ 50: ");
+                            ft = keybrd.nextInt();
 
-                                System.out.println("N$ 20: ");
-                                twt = keybrd.nextInt();
+                            System.out.println("N$ 30: ");
+                            tht = keybrd.nextInt();
 
-                                System.out.println("N$ 10: ");
-                                t = keybrd.nextInt();
+                            System.out.println("N$ 20: ");
+                            twt = keybrd.nextInt();
 
-                                System.out.println("N$ 5: ");
-                                f = keybrd.nextInt();
+                            System.out.println("N$ 10: ");
+                            t = keybrd.nextInt();
 
-                                System.out.println("N$ 1: ");
-                                o = keybrd.nextInt();
+                            System.out.println("N$ 5: ");
+                            f = keybrd.nextInt();
 
-                                System.out.println("50c: ");
-                                ftc = keybrd.nextInt();
+                            System.out.println("N$ 1: ");
+                            o = keybrd.nextInt();
 
-                                System.out.println("10c: ");
-                                tc = keybrd.nextInt();
+                            System.out.println("50c: ");
+                            ftc = keybrd.nextInt();
 
-                                System.out.println("5c: ");
-                                fc = keybrd.nextInt();
+                            System.out.println("10c: ");
+                            tc = keybrd.nextInt();
 
-                                double thr = th * 200.00;
-                                double ohr = oh * 100.00;
-                                double ftr = ft * 50.00;
-                                double thtr = tht * 30.00;
-                                double twtr = twt * 20.00;
-                                double tr = t * 10.00;
-                                double fr = f * 5.00;
-                                double or = o*1.00;
-                                double ftcr = ftc * 0.50;
-                                double tcr = tc * 0.10;
-                                double fcr = fc * 0.05;
+                            System.out.println("5c: ");
+                            fc = keybrd.nextInt();
 
-                                double result = thr + ohr + ftr + thtr + twtr + tr + fr + or + ftcr + tcr + fcr;
-                                if (result == 300.00) {
-                                    double[] newcash = {thr, ohr, ftr, thtr, twtr, tr, fr, or, ftcr, tcr, fcr};
+                            double thr = th * 200.00;
+                            double ohr = oh * 100.00;
+                            double ftr = ft * 50.00;
+                            double thtr = tht * 30.00;
+                            double twtr = twt * 20.00;
+                            double tr = t * 10.00;
+                            double fr = f * 5.00;
+                            double or = o*1.00;
+                            double ftcr = ftc * 0.50;
+                            double tcr = tc * 0.10;
+                            double fcr = fc * 0.05;
 
-                                    if (end!=rows) {
-                                        rows = rows - 1;
-                                        money[end] = newcash;
-                                    } else {
-                                        money[end] = newcash;
-                                    }
-                                    System.out.println("Cashed in successfull ! !");
-                                    break;
-                                } else {
-                                    System.out.println("Invalid amount please retry ! !");
+                            double result = thr + ohr + ftr + thtr + twtr + tr + fr + or + ftcr + tcr + fcr;
 
-                                    break;
-                                }
-                            }
-                            case 2: {
+                                double[] newcash = {thr, ohr, ftr, thtr, twtr, tr, fr, or, ftcr, tcr, fcr};
 
+                               if(result>0){
+                                       printAllcash(newcash, moneyEnd, cols);
+                                       System.out.println(" ");
+                                   double sum = 0;
+                                   for(int i=0; i<cols; i++) {
+                                       sum = sum + newcash[i];
 
-                            }break;
-                            case 3: {
+                                       System.out.println(sum);
+                                       System.out.println(" ");
+                                       System.out.println("Cashed in successfull ! !");
+                                       System.out.println(" ");
+
+                                       break;
+                                   }
+                            } else {
+                                   System.out.println(" ");
+                                System.out.println("Invalid amount please retry ! !");
+                                   System.out.println(" ");
                                 break;
                             }
                         }
-                        break;
-                    }
-                    case 2: {
-                        System.out.println("print all");
-                        int printChoice = 0;
-                        do {
-                            printAllcash(money, end, cols);
+                        case 2: {
 
-                            if(end!=rows){
-                                System.out.println("");
-                                System.out.println("Amount : 0.0");
-                                System.out.println("");
-                            }else {
-                                System.out.println("");
-                                System.out.println("Amount : N$300.00");
-                                System.out.println("");
-                            }
-                            System.out.println("[1] Go back");
-                            printChoice = keybrd.nextInt();
-                        } while (printChoice != 1);
-                        break;
-                    }
 
+                        }break;
+                        case 3: {
+                            break;
+                        }
+                    }
+                    break;
                 }
-            } while (choice != 3);
-            keybrd.close();
-        }
+                case 2: {
+                    System.out.println("print all");
+                    int printChoice = 0;
+                    do {
+                        printAllcash(money,moneyEnd, cols);
+
+                        System.out.println("[1] Go back");
+                        printChoice = keybrd.nextInt();
+                    } while (printChoice != 1);
+                    break;
+                }
+
+            }
+        } while (choice != 3);
+        keybrd.close();
     }
+}
