@@ -1,5 +1,5 @@
 import java.util.*;
-public class iTemsB {
+public class iTems {
 
     public static int findItem(String[][] arr, String searchItem) {
         int indexOfItem = 0, id = 0;
@@ -80,17 +80,48 @@ public class iTemsB {
         end++;
         inventory[end] = Item19;
 
+        double cash[] = new double[11];
+        cash[0] = 200;
+        cash[1] = 100;
+        cash[2] = 50;
+        cash[3] = 30;
+        cash[4] = 20;
+        cash[5] = 10;
+        cash[6] = 5;
+        cash[7] = 1;
+        cash[8] = 0.50;
+        cash[9] = 0.10;
+        cash[10] = 0.05;
+
+        // array for stock of money
+        int numCash[] = new int[11];
+        numCash[0] = 100;
+        numCash[1] = 100;
+        numCash[2] = 100;
+        numCash[3] = 100;
+        numCash[4] = 100;
+        numCash[5] = 200;
+        numCash[6] = 200;
+        numCash[7] = 200;
+        numCash[8] = 200;
+        numCash[9] = 200;
+        numCash[10] = 200;
+
+        // used at the change distribution
+        int tHundreds = 0,hundreds = 0, fifties = 0, thirties = 0,twenties = 0, tens = 0, fives = 0, ones = 0, fiftyC = 0, tenC = 0, fiveC = 0;
+
         Scanner rj = new Scanner(System.in);
 
 
-        double total = 0, priceItem = 0, priceOfItems = 0;
-        int QTY = 0;
+        double total = 0, priceItem = 0, priceOfItems = 0, change = 0, payment = 0;
+        int QTY = 0, newStock = 0, itemRow = 0;
         System.out.println("How many different items do you want to buy?");
+        // used best by buyers with an idea of what they want to buy
         int a = rj.nextInt();
         for (int i = 1; i <= a; i++) {
             System.out.println("Enter item code: ");
             String x = rj.next();
-            int itemRow = findItem(inventory, x);
+            itemRow = findItem(inventory, x);
             // If item row is -1 than the item doesnt exist
             if (itemRow == -1) {
                 System.out.println("Item does not exist in inventory");
@@ -102,115 +133,151 @@ public class iTemsB {
                 QTY = rj.nextInt();
 
                 System.out.println("Quantity: " + QTY);
+                newStock = (Integer.parseInt(inventory[itemRow][stock])) - QTY;
+
+
                 priceItem = Double.parseDouble(inventory[itemRow][price]);
                 priceOfItems = (double) (QTY * priceItem);
 
                 System.out.println("Price of " + inventory[itemRow][name] + ": N$" + priceItem);
-
                 System.out.println("Cost of items: N$" + priceOfItems);
                 total = total + priceOfItems;
 
                 System.out.println("Total due: N$" + total);
-            }
-
-
-            double cash[] = new double[7];
-            cash[0] = 100;
-            cash[1] = 50;
-            cash[2] = 10;
-            cash[3] = 5;
-            cash[4] = 1;
-            cash[5] = 0.10;
-            cash[6] = 0.05;
-
-            int numCash[] = new int[7];
-            numCash[0] = 100;
-            numCash[1] = 100;
-            numCash[2] = 100;
-            numCash[3] = 100;
-            numCash[4] = 100;
-            numCash[5] = 200;
-            numCash[6] = 200;
-
+          }
+             // takes in amoubt paid by input
             System.out.println("Enter amount paid: ");
-            double payment = rj.nextDouble();
+            payment = rj.nextDouble();
 
-            double change = payment - total;
+            change = payment - total;
             System.out.println("Change: N$" + change);
 
-
+            // checks to make sure change is positive number
             if (change >= 0) {
-                int hundreds = 0, fifties = 0, tens = 0, fives = 0, ones = 0, tenC = 0, fiveC = 0;
                 int changed = (int) change * 100;
 
                 if (numCash[0] > 25) {
+                    tHundreds = changed / 20000;
+                    changed = changed % 20000;
+                    numCash[0] = numCash[0] - tHundreds;
+                }
+                else if (numCash[0] <= 25 && numCash[1] > 25) {
+                    hundreds = (changed / 20000) * 2;
+                    changed = (changed % 20000) * 2;
+                    numCash[1] = numCash[1] - hundreds;
+                }
+
+                if (numCash[1] > 25) {
                     hundreds = changed / 10000;
                     changed = changed % 10000;
-                    numCash[0] = numCash[0] - hundreds;
-                } else if (numCash[0] <= 25 && numCash[1] > 25) {
+                    numCash[1] = numCash[1] - hundreds;
+                }
+                else if (numCash[1] <= 25 && numCash[2] > 25) {
                     fifties = (changed / 10000) * 2;
                     changed = (changed % 10000) * 2;
-                    numCash[1] = numCash[1] - fifties;
+                    numCash[2] = numCash[2] - fifties;
                 }
+
+
                 if (numCash[2] > 25) {
+                    fifties = changed / 5000;
+                    changed = changed % 5000;
+                    numCash[2] = numCash[2] - fifties;
+                } else if ((numCash[2] <= 25 && numCash[4] > 25) && numCash[5] > 25) {
+                    changed = changed / 5000;
+                    changed = changed % 5000;
+                    twenties = changed * 2;
+                    numCash[4] = numCash[4] - twenties;
+                    tens = changed * 1;
+                    numCash[5] = numCash[5] - tens;
+                }
+
+                if (numCash[3] > 25) {
+                    thirties = changed / 3000;
+                    changed = changed % 3000 ;
+                    numCash[3] = numCash[3] - thirties;
+                } else if (numCash[3] <= 25 && numCash[4] > 25) {
+                    twenties = changed / 2000 ;
+                    changed = changed % 2000;
+                    numCash[4] = numCash[4] - twenties;
+                }
+
+                if (numCash[4] > 25) {
+                    twenties = changed / 2000 ;
+                    changed = changed % 2000;
+                    numCash[4] = numCash[4] - twenties;
+                } else if (numCash[4] <= 25 && numCash[5] > 25) {
+                    tens = (changed / 2000) * 2;
+                    changed = (changed % 2000) * 2;
+                    numCash[5] = numCash[5] - tens;
+                }
+
+                if (numCash[5] > 25) {
                     tens = changed / 1000;
                     changed = changed % 1000;
-                    numCash[2] = numCash[2] - tens;
-                } else if (numCash[2] <= 25 && numCash[3] > 25) {
-                    fives = (changed / 1000) * 2;
-                    changed = (changed % 1000) * 2;
-                    numCash[3] = numCash[3] - fives;
-                }
-                if (numCash[3] > 25) {
+                    numCash[5] = numCash[5] - tens;
+                } else if (numCash[5] <= 25 && numCash[6] > 25) {
                     fives = changed / 500;
                     changed = changed % 500;
-                    numCash[3] = numCash[3] - fives;
-                } else if (numCash[3] <= 25 && numCash[4] > 25) {
-                    ones = (changed / 500) * 5;
-                    changed = (changed % 500) * 5;
-                    numCash[4] = numCash[4] - ones;
+                    numCash[6] = numCash[6] - fives;
                 }
-                if (numCash[4] > 25) {
+
+                if (numCash[6] > 25) {
+                    fives = changed / 500;
+                    changed = changed % 500;
+                    numCash[6] = numCash[6] - fives;
+                } else if (numCash[6] <= 25 && numCash[7] > 25) {
                     ones = changed / 100;
                     changed = changed % 100;
-                    numCash[4] = numCash[4] - ones;
-                } else if (numCash[4] <= 25 && numCash[5] > 25) {
-                    tenC = (changed / 100) * 10;
-                    changed = (changed % 100) * 10;
-                    numCash[5] = numCash[5] - tenC;
+                    numCash[7] = numCash[7] - ones;
                 }
-                if (numCash[5] > 25) {
+
+                if (numCash[7] > 25) {
+                    ones = changed / 100;
+                    changed = changed % 100;
+                    numCash[7] = numCash[7] - ones;
+                } else if (numCash[7] <= 25 && numCash[8] > 25) {
+                    fiftyC = changed / 50;
+                    changed = changed % 50;
+                    numCash[8] = numCash[8]- fiftyC;
+                }
+
+                if (numCash[8]> 25) {
+                    fiftyC = changed / 50;
+                    changed = changed % 50;
+                    numCash[8] = numCash[8] - fiftyC;
+                } else if (numCash[8] <= 25 && numCash[9] > 25) {
                     tenC = changed / 10;
                     changed = changed % 10;
-                    numCash[5] = numCash[5] - tenC;
-                } else if (numCash[5] <= 25 && numCash[6] > 25) {
+                    numCash[9] = numCash[9] - tenC;
+                }
+
+                if (numCash[9] > 25) {
+                    tenC = changed / 10;
+                    changed = changed % 10;
+                    numCash[9] = numCash[9] - tenC;
+                } else if (numCash[9] <= 25 && numCash[10] > 25){
                     fiveC = (changed / 10) * 2;
                     changed = (changed % 10) * 2;
-                    numCash[6] = numCash[6] - 1;
+                    numCash[10] = numCash[10] - fiveC;
                 }
-                if (numCash[6] > 25) {
-                    fiveC = changed / 5;
-                    changed = changed % 5;
-                    numCash[6] = numCash[6] - fiveC;
-                }
-                System.out.println("Your change is disbursed as follows: N$100 X " + hundreds + ",N$50 X" + fifties + ", N$10X" + tens + ", N$5X" + fives + " ,N$1X" + ones + ",10centsX" + tenC + " and 5centsX" + fiveC);
             }
-
-
-            System.out.print("Sammy's Sweets");
-            System.out.print("417 Iverson Road");
-            System.out.print("Windhoek");
-            System.out.print("104-836-0217");
-            System.out.println("QTY "+ "     "+"Name "+"   "+"Amount");
-            System.out.println("* * * * * * * * * * * * * *");
-            System.out.println(QTY+"    "+inventory[itemRow][name] + "     " + inventory[itemRow][price]);
-
-            System.out.println("* * * * * * * * * * * * * *");
-            System.out.println("Total"+"      "+total);
-            System.out.println("Paid"+"      "+payment);
-            System.out.println("Change"+"      "+change);
-            System.out.println("* * * * * * * * * * * * * *");
-
         }
+        System.out.println("Your change is disbursed as follows: N$200 X " + tHundreds + "N$100 X " + hundreds + ",N$50 X" + fifties + ", N$30 X " + thirties + ", N$20 X " + twenties + ", N$10 X "  + tens + ", N$5 X " + fives + ", N$1 X " + ones + "50cents X " +fiftyC+ ", 10cents X "  + tenC + " and 5cents X " + fiveC);
+
+
+        System.out.println("Sammy's Sweets");
+        System.out.println("417 Iverson Road");
+        System.out.println("Windhoek");
+        System.out.println("104-836-0217");
+        System.out.println("QTY "+ "     "+"Name "+"   "+"Amount");
+        System.out.println("* * * * * * * * * * * * * *");
+        System.out.println(QTY+"    "+inventory[itemRow][name] + "     " + inventory[itemRow][price]);
+
+        System.out.println("* * * * * * * * * * * * * *");
+        System.out.println("Total"+"      "+total);
+        System.out.println("Paid"+"      "+payment);
+        System.out.println("Change"+"      "+change);
+        System.out.println("* * * * * * * * * * * * * *");
     }
 }
