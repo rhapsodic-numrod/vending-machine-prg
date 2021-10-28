@@ -254,7 +254,7 @@ class OwnersMenu{
                             for (int j = 0; j < cols; j++){
                                 System.out.print(inventory[i][j] + "\t");
                             }
-			    System.out.println();
+			                System.out.println();
                         }
                     }
                     System.out.println("[1] Go back");
