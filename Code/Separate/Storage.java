@@ -5,9 +5,7 @@ import java.util.Scanner;
 public class Storage {
 
 
-
-
-    public static void printOwnersMenu () {
+    public static void printOwnersMenu() {
         System.out.println("--------------------");
         System.out.println("----Storage Page----");
         System.out.println("--------------------");
@@ -18,7 +16,7 @@ public class Storage {
         System.out.println("Enter number: ");
     }
 
-    public static void printAllcash ( double[] cashin, int columLen){
+    public static void printAllcash(double[] cashin, int columLen) {
         System.out.println(" ");
         System.out.println("N$ 200 :    " + "N$ 100 :    " + "N$ 50 :     " + "N$ 30 :     " + "N$ 20 :     " + "N$ 10 :     " +
                 "N$ 5 :      " + "N$ 1 :      " + "50c :       " + "10c :       " + "5c :       ");
@@ -31,10 +29,10 @@ public class Storage {
     }
 
 
-    public static void main (String[]args){
+    public static void main(String[] args) {
         int th, oh, ft, tht, twt, t, f, o, ftc, tc, fc;
 
-        int  cols = 11;
+        int cols = 11;
         double[] money = new double[cols];
 
         Scanner keybrd = new Scanner(System.in);
@@ -95,30 +93,31 @@ public class Storage {
                             double twtr = twt * 20.00;
                             double tr = t * 10.00;
                             double fr = f * 5.00;
-                            double or = o*1.00;
+                            double or = o * 1.00;
                             double ftcr = ftc * 0.50;
                             double tcr = tc * 0.10;
                             double fcr = fc * 0.05;
 
-                            System.out.println("There's "+th+" of N$ 200 dollar(s)");
-                            System.out.println("There's "+oh+" of N$ 100 dollar(s)");
-                            System.out.println("There's "+ft+ " of N$ 50 dollar(s)");
-                            System.out.println("There's "+tht+" of N$ 30 dollar(s)");
-                            System.out.println("There's "+twt+" of N$ 20 dollar(s)");
-                            System.out.println("There's "+t+" of N$ 10 dollar(s)");
-                            System.out.println("There's "+f+" of N$ 5 dollar(s)");
-                            System.out.println("There's "+o+" of N$ 1 dollar(s)");
-                            System.out.println("There's "+ftc+" of 50 cent(s)");
-                            System.out.println("There's "+tc+" of 10 cent(s)");
-                            System.out.println("There's "+fc+" of 5 cent(s)");
+                            System.out.println("There's " + th + " of N$ 200 dollar(s)");
+                            System.out.println("There's " + oh + " of N$ 100 dollar(s)");
+                            System.out.println("There's " + ft + " of N$ 50 dollar(s)");
+                            System.out.println("There's " + tht + " of N$ 30 dollar(s)");
+                            System.out.println("There's " + twt + " of N$ 20 dollar(s)");
+                            System.out.println("There's " + t + " of N$ 10 dollar(s)");
+                            System.out.println("There's " + f + " of N$ 5 dollar(s)");
+                            System.out.println("There's " + o + " of N$ 1 dollar(s)");
+                            System.out.println("There's " + ftc + " of 50 cent(s)");
+                            System.out.println("There's " + tc + " of 10 cent(s)");
+                            System.out.println("There's " + fc + " of 5 cent(s)");
 
-                            double result=thr+ ohr+ ftr+ thtr+ twtr+ tr+ fr+ or+ ftcr+ tcr+ fcr;
+                            double result = thr + ohr + ftr + thtr + twtr + tr + fr + or + ftcr + tcr + fcr;
+
 
                             double[] newcash = {thr, ohr, ftr, thtr, twtr, tr, fr, or, ftcr, tcr, fcr};
 
 
-                            if(result>0){
-                                for(int i=0;i<cols;i++) {
+                            if (result > 0) {
+                                for (int i = 0; i < cols; i++) {
                                     money[i] = money[i] + newcash[i];
                                 }
 
@@ -131,7 +130,7 @@ public class Storage {
                                     sum += price;
                                 }
 
-                                System.out.printf("Amount: "+"%.2f", sum);
+                                System.out.printf("Amount: " + "%.2f", sum);
                                 System.out.println(" ");
                                 System.out.println("Cashed in successfull ! !");
                                 System.out.println(" ");
@@ -190,47 +189,84 @@ public class Storage {
                             double twtr = twt * 20.00;
                             double tr = t * 10.00;
                             double fr = f * 5.00;
-                            double or = o*1.00;
+                            double or = o * 1.00;
                             double ftcr = ftc * 0.50;
                             double tcr = tc * 0.10;
                             double fcr = fc * 0.05;
 
-                            System.out.println("There's "+th+" of N$ 200 dollar(s)");
-                            System.out.println("There's "+oh+" of N$ 100 dollar(s)");
-                            System.out.println("There's "+ft+ " of N$ 50 dollar(s)");
-                            System.out.println("There's "+tht+" of N$ 30 dollar(s)");
-                            System.out.println("There's "+twt+" of N$ 20 dollar(s)");
-                            System.out.println("There's "+t+" of N$ 10 dollar(s)");
-                            System.out.println("There's "+f+" of N$ 5 dollar(s)");
-                            System.out.println("There's "+o+" of N$ 1 dollar(s)");
-                            System.out.println("There's "+ftc+" of 50 cent(s)");
-                            System.out.println("There's "+tc+" of 10 cent(s)");
-                            System.out.println("There's "+fc+" of 5 cent(s)");
+                            System.out.println("There's " + th + " of N$ 200 dollar(s)");
+                            System.out.println("There's " + oh + " of N$ 100 dollar(s)");
+                            System.out.println("There's " + ft + " of N$ 50 dollar(s)");
+                            System.out.println("There's " + tht + " of N$ 30 dollar(s)");
+                            System.out.println("There's " + twt + " of N$ 20 dollar(s)");
+                            System.out.println("There's " + t + " of N$ 10 dollar(s)");
+                            System.out.println("There's " + f + " of N$ 5 dollar(s)");
+                            System.out.println("There's " + o + " of N$ 1 dollar(s)");
+                            System.out.println("There's " + ftc + " of 50 cent(s)");
+                            System.out.println("There's " + tc + " of 10 cent(s)");
+                            System.out.println("There's " + fc + " of 5 cent(s)");
 
-                            double result=thr+ ohr+ ftr+ thtr+ twtr+ tr+ fr+ or+ ftcr+ tcr+ fcr;
 
                             double[] newcash = {thr, ohr, ftr, thtr, twtr, tr, fr, or, ftcr, tcr, fcr};
 
 
-                            for(int i=0;i<cols;i++) {
+                            for (int i = 0; i < cols; i++) {
                                 money[i] = money[i] - newcash[i];
                             }
-                            printAllcash(newcash, cols);
+                            if (thr <= 1001.00) {
+                                System.out.println("\nInvalid amount taken there should be N$ 1000 left of N$ 200 notes in the machine!!!\n");
+                                break;
+                            } else if (ohr <= 501.00) {
+                                System.out.println("\nInvalid amount taken there should be N$ 500 left of N$ 100 notes in the machine!!!\n");
+                            break;
+                            } else if (ftr <= 401.00) {
+                                System.out.println("\nInvalid amount taken there should be N$ 400 left of N$ 50 notes in the machine!!!\n");
+                                break;
+                            } else if (thtr <= 401.00) {
+                                System.out.println("\nInvalid amount taken there should be N$ 400 left of N$ 30 notes in the machine!!!\n");
+                                break;
+                            } else if (twtr <= 401.00) {
+                                System.out.println("\nInvalid amount taken there should be N$ 400 left of N$ 20 notes in the machine!!!\n");
+                                break;
+                            } else if (tr <= 201.00) {
+                                System.out.println("\nInvalid amount taken there should be N$ 200 left of N$ 10 notes in the machine!!!\n");
+                                break;
+                            } else if (fr <= 101.00) {
+                                System.out.println("\nInvalid amount taken there should be N$ 100 left of N$ 5 coins in the machine!!!\n");
+                                break;
+                            } else if (or <= 51.00) {
+                                System.out.println("\nInvalid amount taken there should be N$ 50 left of N$ 1 coins in the machine!!!\n");
+                                break;
+                            } else if (ftcr <= 26.00) {
+                                System.out.println("\nInvalid amount taken there should be N$ 25 left of 50c coins in the machine!!!\n");
+                                break;
+                            } else if (tcr <= 26.00) {
+                                System.out.println("\nInvalid amount taken there should be N$ 25 left of 10c coins in the machine!!!\n");
+                                break;
+                            } else if (fcr <= 19.00) {
+                                System.out.println("\nInvalid amount taken there should be N$ 18 left in of 5c coins the machine!!!\n");
+                                break;
+                            } else {
 
 
-                            System.out.println(" ");
-                            double sum = 0;
-                            for (double price : newcash) {
-                                sum += price;
+                                printAllcash(newcash, cols);
+
+
+                                System.out.println(" ");
+                                double sum = 0;
+                                for (double price : newcash) {
+                                    sum += price;
+                                }
+
+                                System.out.printf("Amount : " + "%.2f", sum);
+                                System.out.println(" ");
+                                System.out.println("Cashed out successfull ! !");
+                                System.out.println(" ");
                             }
-
-                            System.out.printf("Amount : "+"%.2f", sum);
-                            System.out.println(" ");
-                            System.out.println("Cashed in successfull ! !");
-                            System.out.println(" ");
+                        }
 
 
-                        }break;
+                        break;
                         case 3: {
                             break;
                         }
@@ -248,10 +284,14 @@ public class Storage {
                         printChoice = keybrd.nextInt();
                     } while (printChoice != 1);
                     break;
-                }
 
+                }
             }
-        } while (choice != 3);
-        keybrd.close();
+        }
+                while (choice != 3) ;
+                keybrd.close();
+
+
+        }
     }
-}
+
