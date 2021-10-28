@@ -31,14 +31,26 @@ class OwnersMenu{
         return indexOfItem;
     }
 
-    public static void printAllItems(String[][] items, int lastRow, int columLen){
-        System.out.println("Item ID\tItem Name\tItem Price\tStock Available");
-        for (int i = 0; i <= lastRow; i++){
-            for (int j = 0; j < columLen; j++){
-                System.out.print(items[i][j] + "\t");
-            }
-            System.out.println();
+    public static void ownerPrintAllItems(String[][] items, int lastRow){
+        int id = 0,name  = 1, price = 2, stock = 3;
+        int itemLength = items.length;
+        TableList ownerItemList = new TableList(4, "Item ID", "Item Name", "Price", "Stock Available");
+        ownerItemList.withUnicode(true);
+        for (int i = 0; i < itemLength; i++){
+            ownerItemList.addRow(items[i][id], items[i][name],items[i][price],items[i][stock]);
         }
+        ownerItemList.print();
+    }
+
+    public static void custPrintAllItems(String[][] items, int lastRow){
+        int id = 0,name  = 1, price = 2;
+        int itemLength = items.length;
+        TableList itemList = new TableList(3, "Item ID", "Item Name", "Price");
+        itemList.withUnicode(true);
+        for (int i = 0; i < itemLength; i++){
+            itemList.addRow(items[i][id], items[i][name], items[i][price]);
+        }
+        itemList.print();
     }
     public static void main(String[] args){
         int id = 0,name  = 1, price = 2, stock = 3, end = -1,rows = 20, cols = 4;
@@ -123,7 +135,7 @@ class OwnersMenu{
                     int addRestockChoice = input.nextInt();
                     switch (addRestockChoice){
                         case 1:{
-                            System.out.println("restock item");
+                            System.out.println("-------------------");
                             System.out.print("Enter item id: ");
                             String itemToBeRestocked = input.next();
                             // Find item
@@ -144,12 +156,13 @@ class OwnersMenu{
                                 int newStock = amountToBeAdded + currentStock;
                                 // Change the value of the old stock to the new stock
                                 inventory[itemRow][stock] = String.valueOf(newStock);
+                                System.out.println("-----------------------------");
                                 System.out.printf("Item name: %s Current Stock: %s%n",  inventory[itemRow][name], inventory[itemRow][stock]);
                                 System.out.println("Process successfull :)");
                                 break;
                             }
                         } case 2:{
-                            System.out.println("add new");
+                            System.out.println("-------------------");
                             // Only add if the inventory is not full
                             if (end + 1 != rows){
                                 // Get item information
@@ -171,6 +184,7 @@ class OwnersMenu{
                                 // Increase the end
                                 end++;
                                 System.out.println("Process Successfull :)");
+                                System.out.println("-------------------");
                                 break;
                             } else{
                                 System.out.println("Unfortunately inventory is full cannot add any more items");
@@ -182,9 +196,9 @@ class OwnersMenu{
                     }
                     break;
                 } case 2:{
-                    System.out.println("change price");
+                    System.out.println("-------------------");
                     // Display all items
-                    printAllItems(inventory, end, cols);
+                    ownerPrintAllItems(inventory, end);
                     while(true){
                         // Get the item information
                         System.out.print("Enter item id: ");
@@ -229,11 +243,10 @@ class OwnersMenu{
                     System.out.println("cash in /out");
                     break;
                 } case 4:{
-                    // TODO: Make this display thing look nice coz rn naaaah
-                    System.out.println("print all");
+                    System.out.println("------- All Items -------");
                     int printChoice = 0;
                     do{
-                    printAllItems(inventory, end, cols);
+                    ownerPrintAllItems(inventory, end);
                     System.out.println("[1] Go back");
                     printChoice = input.nextInt();
                     } while (printChoice != 1);
@@ -243,20 +256,19 @@ class OwnersMenu{
                     // TODO: Finish print all cash section (Grant)
                     break;
                 } case 6:{
-                    // TODO: Make restock section look better
-                    System.out.println("need restock");
+                    System.out.println("----- To Be Restocked -----");
+                    TableList restockTable = new TableList(3,"Item ID", "Item Name","Stock Available");
+                    restockTable.withUnicode(true);
+                    restockTable.sortBy(0);
                     int printRestockChoice = 0;
                     do{
-                    System.out.println("Item ID\tItem name\tItem Price\tStock Availabe");
                     for (int i = 0; i < end; i++){
                         int stockAvailable = Integer.parseInt(inventory[i][stock]);
                         if (stockAvailable <= 25){
-                            for (int j = 0; j < cols; j++){
-                                System.out.print(inventory[i][j] + "\t");
-                            }
-			                System.out.println();
+                            restockTable.addRow(inventory[i][id],inventory[i][name],inventory[i][stock]);
                         }
                     }
+                    restockTable.print();
                     System.out.println("[1] Go back");
                     printRestockChoice = input.nextInt();
                     } while (printRestockChoice != 1);
