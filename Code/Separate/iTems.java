@@ -1,5 +1,5 @@
 import java.util.*;
-public class iTemsB {
+public class iTems {
 
     public static int findItem(String[][] arr, String searchItem) {
         int indexOfItem = 0, id = 0;
