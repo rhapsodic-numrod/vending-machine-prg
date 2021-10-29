@@ -71,6 +71,12 @@ public class vendingMachine {
     }
     public static void main(String[] args){
         Scanner userInput = new Scanner(System.in);
+        // Finance information
+        int th, oh, ft, tht, twt, t, f, o, ftc, tc, fc;
+
+        int financeCols = 11;
+        double[] money = new double[financeCols];
+        //inventory values
         int id = 0,name  = 1, price = 2, stock = 3, inventoryEnd = -1, rows = 20, inventoryCols = 4;
         // Two factor authencation codes
         String ownerPass = "1234";
@@ -155,212 +161,212 @@ public class vendingMachine {
             //#region Customer menu
             if (landingPageChoice.equals("*")){
                 custPrintAllItems(inventory, inventoryEnd);
-               
-        double cash[] = new double[11];
-        cash[0] = 200;
-        cash[1] = 100;
-        cash[2] = 50;
-        cash[3] = 30;
-        cash[4] = 20;
-        cash[5] = 10;
-        cash[6] = 5;
-        cash[7] = 1;
-        cash[8] = 0.50;
-        cash[9] = 0.10;
-        cash[10] = 0.05;
+                double cash[] = new double[11];
+                cash[0] = 200;
+                cash[1] = 100;
+                cash[2] = 50;
+                cash[3] = 30;
+                cash[4] = 20;
+                cash[5] = 10;
+                cash[6] = 5;
+                cash[7] = 1;
+                cash[8] = 0.50;
+                cash[9] = 0.10;
+                cash[10] = 0.05;
 
-        int numCash[] = new int[11];
-        numCash[0] = 100;
-        numCash[1] = 100;
-        numCash[2] = 100;
-        numCash[3] = 100;
-        numCash[4] = 100;
-        numCash[5] = 200;
-        numCash[6] = 200;
-        numCash[7] = 200;
-        numCash[8] = 200;
-        numCash[9] = 200;
-        numCash[10] = 200;
+                int numCash[] = new int[11];
+                numCash[0] = 100;
+                numCash[1] = 100;
+                numCash[2] = 100;
+                numCash[3] = 100;
+                numCash[4] = 100;
+                numCash[5] = 200;
+                numCash[6] = 200;
+                numCash[7] = 200;
+                numCash[8] = 200;
+                numCash[9] = 200;
+                numCash[10] = 200;
 
-        int tHundreds = 0,hundreds = 0, fifties = 0, thirties = 0,twenties = 0, tens = 0, fives = 0, ones = 0, fiftyC = 0, tenC = 0, fiveC = 0;
-        int i = 0;
-        String[][] n = new String[rows][cols];
+                int tHundreds = 0,hundreds = 0, fifties = 0, thirties = 0,twenties = 0, tens = 0, fives = 0, ones = 0, fiftyC = 0, tenC = 0, fiveC = 0;
+                int i = 0;
+                String[][] n = new String[rows][inventoryCols];
 
-        double total = 0, priceItem = 0, priceOfItems = 0, change = 0, payment = 0;
-        int QTY = 0, newStock = 0, itemRow = 0;
-        System.out.println("How many different items do you want to buy?");
-        int a = userInput.nextInt();
-        for (i = 1; i <= a; i = i + 1) {
-            System.out.println("Enter item code: ");
-            String x = userInput.next();
+                double total = 0, priceItem = 0, priceOfItems = 0, change = 0, payment = 0;
+                int QTY = 0, newStock = 0, itemRow = 0;
+                System.out.println("How many different items do you want to buy?");
+                int a = userInput.nextInt();
+                for (i = 1; i <= a; i = i + 1) {
+                    System.out.println("Enter item code: ");
+                    String x = userInput.next();
 
-            itemRow = findItem(inventory, x);
-            // If item row is -1 than the item doesnt exist
-            if (itemRow == -1) {
-                System.out.println("Item does not exist in inventory");
-                break;
-            } else if (itemRow != 1) {  //if item exists
-                // prints name of item chosen
-                System.out.println("Item selected: " + inventory[itemRow][name]);
-                n[a+1][1] = inventory[itemRow][name];
-                // asks for quantity of item to be input
-                System.out.println("Enter quantity of item: ");
-                QTY = userInput.nextInt();
-                // prints quantity input
-                System.out.println("Quantity: " + QTY);
-                newStock = (Integer.parseInt(inventory[itemRow][stock])) - QTY;
+                    itemRow = findItem(inventory, x);
+                    // If item row is -1 than the item doesnt exist
+                    if (itemRow == -1) {
+                        System.out.println("Item does not exist in inventory");
+                        break;
+                    } else if (itemRow != 1) {  //if item exists
+                        // prints name of item chosen
+                        System.out.println("Item selected: " + inventory[itemRow][name]);
+                        n[a+1][1] = inventory[itemRow][name];
+                        // asks for quantity of item to be input
+                        System.out.println("Enter quantity of item: ");
+                        QTY = userInput.nextInt();
+                        // prints quantity input
+                        System.out.println("Quantity: " + QTY);
+                        newStock = (Integer.parseInt(inventory[itemRow][stock])) - QTY;
 
-                priceItem = Double.parseDouble(inventory[itemRow][price]);
-                priceOfItems = (double) (QTY * priceItem);
+                        priceItem = Double.parseDouble(inventory[itemRow][price]);
+                        priceOfItems = (double) (QTY * priceItem);
 
-                System.out.println("Price of " + inventory[itemRow][name] + ": N$" + priceItem);
-                System.out.println("Cost of items: N$" + priceOfItems);
-                total = total + priceOfItems;
+                        System.out.println("Price of " + inventory[itemRow][name] + ": N$" + priceItem);
+                        System.out.println("Cost of items: N$" + priceOfItems);
+                        total = total + priceOfItems;
 
-                System.out.println("Total due: N$" + total);
-            }
-        }
-
+                        System.out.println("Total due: N$" + total);
+                    }
+                }
 
 
-        System.out.println("Enter amount paid: ");
-        payment = userInput.nextDouble();
 
-        change = payment - total;
-        System.out.println("Change: N$" + change);
+                System.out.println("Enter amount paid: ");
+                payment = userInput.nextDouble();
 
-
-        if (change >= 0) {
-            int changed = (int) change * 100;
-
-            if (numCash[0] > 25) {
-                tHundreds = changed / 20000;
-                changed = changed % 20000;
-                numCash[0] = numCash[0] - tHundreds;
-            } else if (numCash[0] <= 25 && numCash[1] > 25) {
-                hundreds = (changed / 20000) * 2;
-                changed = (changed % 20000) * 2;
-                numCash[1] = numCash[1] - hundreds;
-            }
-
-            if (numCash[1] > 25) {
-                hundreds = changed / 10000;
-                changed = changed % 10000;
-                numCash[1] = numCash[1] - hundreds;
-            } else if (numCash[1] <= 25 && numCash[2] > 25) {
-                fifties = (changed / 10000) * 2;
-                changed = (changed % 10000) * 2;
-                numCash[2] = numCash[2] - fifties;
-            }
+                change = payment - total;
+                System.out.println("Change: N$" + change);
 
 
-            if (numCash[2] > 25) {
-                fifties = changed / 5000;
-                changed = changed % 5000;
-                numCash[2] = numCash[2] - fifties;
-            } else if ((numCash[2] <= 25 && numCash[4] > 25) && numCash[5] > 25) {
-                changed = changed / 5000;
-                changed = changed % 5000;
-                twenties = changed * 2;
-                numCash[4] = numCash[4] - twenties;
-                tens = changed * 1;
-                numCash[5] = numCash[5] - tens;
-            }
+                if (change >= 0) {
+                    int changed = (int) change * 100;
 
-            if (numCash[3] > 25) {
-                thirties = changed / 3000;
-                changed = changed % 3000;
-                numCash[3] = numCash[3] - thirties;
-            } else if (numCash[3] <= 25 && numCash[4] > 25) {
-                twenties = changed / 2000;
-                changed = changed % 2000;
-                numCash[4] = numCash[4] - twenties;
-            }
+                    if (numCash[0] > 25) {
+                        tHundreds = changed / 20000;
+                        changed = changed % 20000;
+                        numCash[0] = numCash[0] - tHundreds;
+                    } else if (numCash[0] <= 25 && numCash[1] > 25) {
+                        hundreds = (changed / 20000) * 2;
+                        changed = (changed % 20000) * 2;
+                        numCash[1] = numCash[1] - hundreds;
+                    }
 
-            if (numCash[4] > 25) {
-                twenties = changed / 2000;
-                changed = changed % 2000;
-                numCash[4] = numCash[4] - twenties;
-            } else if (numCash[4] <= 25 && numCash[5] > 25) {
-                tens = (changed / 2000) * 2;
-                changed = (changed % 2000) * 2;
-                numCash[5] = numCash[5] - tens;
-            }
-
-            if (numCash[5] > 25) {
-                tens = changed / 1000;
-                changed = changed % 1000;
-                numCash[5] = numCash[5] - tens;
-            } else if (numCash[5] <= 25 && numCash[6] > 25) {
-                fives = changed / 500;
-                changed = changed % 500;
-                numCash[6] = numCash[6] - fives;
-            }
-
-            if (numCash[6] > 25) {
-                fives = changed / 500;
-                changed = changed % 500;
-                numCash[6] = numCash[6] - fives;
-            } else if (numCash[6] <= 25 && numCash[7] > 25) {
-                ones = changed / 100;
-                changed = changed % 100;
-                numCash[7] = numCash[7] - ones;
-            }
-
-            if (numCash[7] > 25) {
-                ones = changed / 100;
-                changed = changed % 100;
-                numCash[7] = numCash[7] - ones;
-            } else if (numCash[7] <= 25 && numCash[8] > 25) {
-                fiftyC = changed / 50;
-                changed = changed % 50;
-                numCash[8] = numCash[8] - fiftyC;
-            }
-
-            if (numCash[8] > 25) {
-                fiftyC = changed / 50;
-                changed = changed % 50;
-                numCash[8] = numCash[8] - fiftyC;
-            } else if (numCash[8] <= 25 && numCash[9] > 25) {
-                tenC = changed / 10;
-                changed = changed % 10;
-                numCash[9] = numCash[9] - tenC;
-            }
-
-            if (numCash[9] > 25) {
-                tenC = changed / 10;
-                changed = changed % 10;
-                numCash[9] = numCash[9] - tenC;
-            } else if (numCash[9] <= 25 && numCash[10] > 25) {
-                fiveC = (changed / 10) * 2;
-                changed = (changed % 10) * 2;
-                numCash[10] = numCash[10] - fiveC;
-            }
-            System.out.println("Your change is disbursed as follows: N$200 X " + tHundreds + ", N$100 X " + hundreds + ", N$50 X" + fifties + ", N$30 X " + thirties + ", N$20 X " + twenties + ", N$10 X " + tens + ", N$5 X " + fives + ", N$1 X " + ones + ", 50cents X " + fiftyC + ", 10cents X " + tenC + " and 5cents X " + fiveC);
+                    if (numCash[1] > 25) {
+                        hundreds = changed / 10000;
+                        changed = changed % 10000;
+                        numCash[1] = numCash[1] - hundreds;
+                    } else if (numCash[1] <= 25 && numCash[2] > 25) {
+                        fifties = (changed / 10000) * 2;
+                        changed = (changed % 10000) * 2;
+                        numCash[2] = numCash[2] - fifties;
+                    }
 
 
-            System.out.println("Sammy's Sweets");
-            System.out.println("417 Iverson Road");
-            System.out.println("Windhoek");
-            System.out.println("104-836-0217");
-            System.out.println("QTY " + "     " + "Name " + "   " + "Amount");
-            System.out.println("* * * * * * * * * * * * * *");
-            for (i = 1; i <= a; i++) {
-                    System.out.println(QTY + "    " + n[a + 1][1] + "     " + priceItem);
-        }
-            System.out.println("* * * * * * * * * * * * * *");
-            System.out.println("Total"+"      "+total);
-            System.out.println("Paid"+"      "+payment);
-            System.out.println("Change"+"      "+change);
-            System.out.println("* * * * * * * * * * * * * *");
-        }
-        else if(change < 0){
-            System.out.println("We do not allow negatives. Please pay with a value greater than or equals to the total due");
-        }
-    }
+                    if (numCash[2] > 25) {
+                        fifties = changed / 5000;
+                        changed = changed % 5000;
+                        numCash[2] = numCash[2] - fifties;
+                    } else if ((numCash[2] <= 25 && numCash[4] > 25) && numCash[5] > 25) {
+                        changed = changed / 5000;
+                        changed = changed % 5000;
+                        twenties = changed * 2;
+                        numCash[4] = numCash[4] - twenties;
+                        tens = changed * 1;
+                        numCash[5] = numCash[5] - tens;
+                    }
+
+                    if (numCash[3] > 25) {
+                        thirties = changed / 3000;
+                        changed = changed % 3000;
+                        numCash[3] = numCash[3] - thirties;
+                    } else if (numCash[3] <= 25 && numCash[4] > 25) {
+                        twenties = changed / 2000;
+                        changed = changed % 2000;
+                        numCash[4] = numCash[4] - twenties;
+                    }
+
+                    if (numCash[4] > 25) {
+                        twenties = changed / 2000;
+                        changed = changed % 2000;
+                        numCash[4] = numCash[4] - twenties;
+                    } else if (numCash[4] <= 25 && numCash[5] > 25) {
+                        tens = (changed / 2000) * 2;
+                        changed = (changed % 2000) * 2;
+                        numCash[5] = numCash[5] - tens;
+                    }
+
+                    if (numCash[5] > 25) {
+                        tens = changed / 1000;
+                        changed = changed % 1000;
+                        numCash[5] = numCash[5] - tens;
+                    } else if (numCash[5] <= 25 && numCash[6] > 25) {
+                        fives = changed / 500;
+                        changed = changed % 500;
+                        numCash[6] = numCash[6] - fives;
+                    }
+
+                    if (numCash[6] > 25) {
+                        fives = changed / 500;
+                        changed = changed % 500;
+                        numCash[6] = numCash[6] - fives;
+                    } else if (numCash[6] <= 25 && numCash[7] > 25) {
+                        ones = changed / 100;
+                        changed = changed % 100;
+                        numCash[7] = numCash[7] - ones;
+                    }
+
+                    if (numCash[7] > 25) {
+                        ones = changed / 100;
+                        changed = changed % 100;
+                        numCash[7] = numCash[7] - ones;
+                    } else if (numCash[7] <= 25 && numCash[8] > 25) {
+                        fiftyC = changed / 50;
+                        changed = changed % 50;
+                        numCash[8] = numCash[8] - fiftyC;
+                    }
+
+                    if (numCash[8] > 25) {
+                        fiftyC = changed / 50;
+                        changed = changed % 50;
+                        numCash[8] = numCash[8] - fiftyC;
+                    } else if (numCash[8] <= 25 && numCash[9] > 25) {
+                        tenC = changed / 10;
+                        changed = changed % 10;
+                        numCash[9] = numCash[9] - tenC;
+                    }
+
+                    if (numCash[9] > 25) {
+                        tenC = changed / 10;
+                        changed = changed % 10;
+                        numCash[9] = numCash[9] - tenC;
+                    } else if (numCash[9] <= 25 && numCash[10] > 25) {
+                        fiveC = (changed / 10) * 2;
+                        changed = (changed % 10) * 2;
+                        numCash[10] = numCash[10] - fiveC;
+                    }
+                    System.out.println("Your change is disbursed as follows: N$200 X " + tHundreds + ", N$100 X " + hundreds + ", N$50 X" + fifties + ", N$30 X " + thirties + ", N$20 X " + twenties + ", N$10 X " + tens + ", N$5 X " + fives + ", N$1 X " + ones + ", 50cents X " + fiftyC + ", 10cents X " + tenC + " and 5cents X " + fiveC);
+
+
+                    System.out.println("Sammy's Sweets");
+                    System.out.println("417 Iverson Road");
+                    System.out.println("Windhoek");
+                    System.out.println("104-836-0217");
+                    System.out.println("QTY " + "     " + "Name " + "   " + "Amount");
+                    System.out.println("* * * * * * * * * * * * * *");
+                    for (i = 1; i <= a; i++) {
+                            System.out.println(QTY + "    " + n[a + 1][1] + "     " + priceItem);
+                }
+                    System.out.println("* * * * * * * * * * * * * *");
+                    System.out.println("Total"+"      "+total);
+                    System.out.println("Paid"+"      "+payment);
+                    System.out.println("Change"+"      "+change);
+                    System.out.println("* * * * * * * * * * * * * *");
+                }
+                else if(change < 0){
+                    System.out.println("We do not allow negatives. Please pay with a value greater than or equals to the total due");
+                    break;
+                }
+                
             //#endregion Customer menu
             //#region Owners menu
-            else if(landingPageChoice.equalsIgnoreCase(ownerPass)){
+            }else if(landingPageChoice.equalsIgnoreCase(ownerPass)){
                 System.out.print("Enter verification password: ");
                 String verificationCode = userInput.next();
                 if (verificationCode.equalsIgnoreCase(verificationPass)){
@@ -483,8 +489,231 @@ public class vendingMachine {
                                 }
                                 break;
                             } case 3:{
-                                // TODO: Finish Cash in Cash out section (Grant)
                                 System.out.println("------- Cash in/out -------");
+                                System.out.println("[1] Cash in ");
+                                System.out.println("[2] Cash out");
+                                System.out.println("[3] Go Back");
+                                int cashInOutChoice = userInput.nextInt();
+                                switch (cashInOutChoice) {
+                                    case 1: {
+
+                                        System.out.println("---------------------------------------------------------------");
+                                        System.out.println("Enter number of the notes and coins");
+                                        System.out.println("for example: " + "N$ 200: \n" + "2");
+                                        System.out.println("---------------------------------------------------------------");
+                                        System.out.println("N$ 200: ");
+                                        //type how much of the 200 notes you want//
+                                        //th stands for two hundred//
+                                        th = userInput.nextInt();
+
+                                        System.out.println("N$ 100: ");
+                                        //oh stands for one hundred//
+                                        oh = userInput.nextInt();
+
+                                        System.out.println("N$ 50: ");
+                                        ft = userInput.nextInt();
+
+                                        System.out.println("N$ 30: ");
+                                        tht = userInput.nextInt();
+
+                                        System.out.println("N$ 20: ");
+                                        twt = userInput.nextInt();
+
+                                        System.out.println("N$ 10: ");
+                                        t = userInput.nextInt();
+
+                                        System.out.println("N$ 5: ");
+                                        f = userInput.nextInt();
+
+                                        System.out.println("N$ 1: ");
+                                        o = userInput.nextInt();
+
+                                        System.out.println("50c: ");
+                                        ftc = userInput.nextInt();
+
+                                        System.out.println("10c: ");
+                                        tc = userInput.nextInt();
+
+                                        System.out.println("5c: ");
+                                        fc = userInput.nextInt();
+
+                                        double thr = th * 200.00;
+                                        double ohr = oh * 100.00;
+                                        double ftr = ft * 50.00;
+                                        double thtr = tht * 30.00;
+                                        double twtr = twt * 20.00;
+                                        double tr = t * 10.00;
+                                        double fr = f * 5.00;
+                                        double or = o * 1.00;
+                                        double ftcr = ftc * 0.50;
+                                        double tcr = tc * 0.10;
+                                        double fcr = fc * 0.05;
+
+                                        System.out.println("There's " + th + " of N$ 200 dollar(s)");
+                                        System.out.println("There's " + oh + " of N$ 100 dollar(s)");
+                                        System.out.println("There's " + ft + " of N$ 50 dollar(s)");
+                                        System.out.println("There's " + tht + " of N$ 30 dollar(s)");
+                                        System.out.println("There's " + twt + " of N$ 20 dollar(s)");
+                                        System.out.println("There's " + t + " of N$ 10 dollar(s)");
+                                        System.out.println("There's " + f + " of N$ 5 dollar(s)");
+                                        System.out.println("There's " + o + " of N$ 1 dollar(s)");
+                                        System.out.println("There's " + ftc + " of 50 cent(s)");
+                                        System.out.println("There's " + tc + " of 10 cent(s)");
+                                        System.out.println("There's " + fc + " of 5 cent(s)");
+
+                                        double result = thr + ohr + ftr + thtr + twtr + tr + fr + or + ftcr + tcr + fcr;
+
+
+                                        double[] newcash = {thr, ohr, ftr, thtr, twtr, tr, fr, or, ftcr, tcr, fcr};
+
+
+                                        if (result >= 0) {
+                                            //financeCols is an arraysize//
+                                            for (int i = 0; i < financeCols; i++) {
+                                                //newcash is put in money and then if another newcash is made it will add on the previous newcash in money//
+                                                money[i] = money[i] + newcash[i];
+                                            }
+                                            //lets it appear in table format//
+                                            printAllcash(newcash, financeCols);
+
+
+                                            System.out.println(" ");
+                                            double sum = 0;
+                                            //adds everything in the array newcash//
+                                            for (double itemPrice : newcash) {
+                                                sum += itemPrice;
+                                            }
+
+                                            System.out.printf("Amount: " + "%.2f", sum);
+                                            System.out.println(" ");
+                                            System.out.println("Cashed in successfull ! !");
+                                            System.out.println(" ");
+
+                                            break;
+
+                                        } else {
+                                            System.out.println(" ");
+                                            System.out.println("Invalid amount please retry ! !");
+                                            System.out.println(" ");
+                                            break;
+                                        }
+                                    }
+                                    case 2: {
+                                        System.out.println("---------------------------------------------------------------");
+                                        System.out.println("Enter number of the notes and coins");
+                                        System.out.println("for example: " + "N$ 200: \n" + "2");
+                                        System.out.println("---------------------------------------------------------------");
+                                        double[] newcash = new double[financeCols];
+                                        boolean isPossible = true;
+                                        do{
+                                        System.out.println("N$ 200: ");
+                                        th = userInput.nextInt();
+
+                                        System.out.println("N$ 100: ");
+                                        oh = userInput.nextInt();
+
+                                        System.out.println("N$ 50: ");
+                                        ft = userInput.nextInt();
+
+                                        System.out.println("N$ 30: ");
+                                        tht = userInput.nextInt();
+
+                                        System.out.println("N$ 20: ");
+                                        twt = userInput.nextInt();
+
+                                        System.out.println("N$ 10: ");
+                                        t = userInput.nextInt();
+
+                                        System.out.println("N$ 5: ");
+                                        f = userInput.nextInt();
+
+                                        System.out.println("N$ 1: ");
+                                        o = userInput.nextInt();
+
+                                        System.out.println("50c: ");
+                                        ftc = userInput.nextInt();
+
+                                        System.out.println("10c: ");
+                                        tc = userInput.nextInt();
+
+                                        System.out.println("5c: ");
+                                        fc = userInput.nextInt();
+
+                                        double thr = th * 200.00;
+                                        double ohr = oh * 100.00;
+                                        double ftr = ft * 50.00;
+                                        double thtr = tht * 30.00;
+                                        double twtr = twt * 20.00;
+                                        double tr = t * 10.00;
+                                        double fr = f * 5.00;
+                                        double or = o * 1.00;
+                                        double ftcr = ftc * 0.50;
+                                        double tcr = tc * 0.10;
+                                        double fcr = fc * 0.05;
+
+                                        System.out.println("There's " + th + " of N$ 200 dollar(s)");
+                                        System.out.println("There's " + oh + " of N$ 100 dollar(s)");
+                                        System.out.println("There's " + ft + " of N$ 50 dollar(s)");
+                                        System.out.println("There's " + tht + " of N$ 30 dollar(s)");
+                                        System.out.println("There's " + twt + " of N$ 20 dollar(s)");
+                                        System.out.println("There's " + t + " of N$ 10 dollar(s)");
+                                        System.out.println("There's " + f + " of N$ 5 dollar(s)");
+                                        System.out.println("There's " + o + " of N$ 1 dollar(s)");
+                                        System.out.println("There's " + ftc + " of 50 cent(s)");
+                                        System.out.println("There's " + tc + " of 10 cent(s)");
+                                        System.out.println("There's " + fc + " of 5 cent(s)");
+
+                                        newcash[0] = thr;
+                                        newcash[1] = ohr;
+                                        newcash[2] = ftr;
+                                        newcash[3] = thtr;
+                                        newcash[4] = twtr;
+                                        newcash[5] = tr;
+                                        newcash[6] = fr;
+                                        newcash[7] = or;
+                                        newcash[8] = ftcr;
+                                        newcash[9] = tcr;
+                                        newcash[10] = fcr;
+                                        for (int i = 0; i < financeCols; i++) {
+                                            if (money[i] - newcash[i] < 0) {
+                                                isPossible = false;
+                                                break;
+                                            }
+                                        }
+                                        if (!isPossible){
+                                            System.out.println("");
+                                            System.out.println("Invalid amount please cash in enough money to be taken out!!");
+                                            System.out.println("");
+                                            System.exit(01);
+                                        } else{
+                                            for (int j = 0; j < financeCols; j++) {
+                                                money[j] = money[j] - newcash[j];
+                                            }
+                                            isPossible = true;
+                                            break;
+                                        }
+                                    }while (!isPossible);
+                                    if (isPossible){
+                                        printAllcash(newcash, financeCols);
+                                        
+                                        
+                                        System.out.println(" ");
+                                        double sum = 0;
+                                        for (double itemPrice : newcash) {
+                                            sum += itemPrice;
+                                        }
+                                        
+                                        System.out.printf("Amount : " + "%.2f", sum);
+                                        System.out.println(" ");
+                                        System.out.println("Cashed out successfull ! !");
+                                        System.out.println(" ");
+                                    }
+                                    }
+                                    break;
+                                    case 3: {
+                                        break;
+                                    }
+                                }
                                 break;
                             } case 4:{
                                 System.out.println("------- All Items -------");
@@ -496,8 +725,15 @@ public class vendingMachine {
                                 } while (printChoice != 1);
                                 break;
                             } case 5:{
-                                System.out.println("print all cash");
-                                // TODO: Finish print all cash section (Grant)
+                                System.out.println("------- All Cash -------");
+                                int printChoice = 0;
+                                do {
+                                    //prints all cash in table format//
+                                    printAllcash(money, financeCols);
+
+                                    System.out.println("[1] Go back");
+                                    printChoice = userInput.nextInt();
+                                } while (printChoice != 1);
                                 break;
                             } case 6:{
                                 System.out.println("----- To Be Restocked -----");
@@ -506,10 +742,10 @@ public class vendingMachine {
                                 restockTable.sortBy(0);
                                 int printRestockChoice = 0;
                                 do{
-                                for (int i = 0; i < inventoryEnd; i++){
-                                    int stockAvailable = Integer.parseInt(inventory[i][stock]);
+                                for (int k = 0; k < inventoryEnd; k++){
+                                    int stockAvailable = Integer.parseInt(inventory[k][stock]);
                                     if (stockAvailable <= 25){
-                                        restockTable.addRow(inventory[i][id],inventory[i][name],inventory[i][stock]);
+                                        restockTable.addRow(inventory[k][id],inventory[k][name],inventory[k][stock]);
                                     }
                                 }
                                 restockTable.print();
@@ -530,4 +766,5 @@ public class vendingMachine {
             //#endregion Owner menu
         } 
         userInput.close();
+    }
     }

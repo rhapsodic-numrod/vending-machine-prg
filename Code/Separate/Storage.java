@@ -16,38 +16,43 @@ public class Storage {
         System.out.println("Enter number: ");
     }
 
-    public static void printAllcash(double[] cashin, int columLen) {
-        System.out.println(" ");
-        System.out.println("N$ 200 :    " + "N$ 100 :    " + "N$ 50 :     " + "N$ 30 :     " + "N$ 20 :     " + "N$ 10 :     " +
-                "N$ 5 :      " + "N$ 1 :      " + "50c :       " + "10c :       " + "5c :       ");
-        System.out.println("----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ");
-        for (int j = 0; j < columLen; j++) {
-            System.out.printf("%.2f" + "         ", cashin[j]);
-        }
-        System.out.println(" ");
-        System.out.println();
+    // public static void printAllcash(double[] cashin, int columLen) {
+    //     System.out.println(" ");
+    //     System.out.println("N$ 200 :    " + "N$ 100 :    " + "N$ 50 :     " + "N$ 30 :     " + "N$ 20 :     " + "N$ 10 :     " +
+    //             "N$ 5 :      " + "N$ 1 :      " + "50c :       " + "10c :       " + "5c :       ");
+    //     System.out.println("----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ");
+    //     for (int j = 0; j < columLen; j++) {
+    //         System.out.printf("%.2f" + "         ", cashin[j]);
+    //     }
+    //     System.out.println(" ");
+    //     System.out.println();
+    // }
+    public static void printAllcash(double[] moneyArray, int columLen) {
+        TableList money = new TableList(columLen, "N$ 200","N$ 100","N$ 50","N$ 30","N$ 20","N$ 10","N$ 5","N$ 1","50c","10c","5c").withUnicode(true);
+        money.addRow(Double.toString(moneyArray[0]),Double.toString(moneyArray[1]),Double.toString(moneyArray[2]),Double.toString(moneyArray[3]),Double.toString(moneyArray[4]),Double.toString(moneyArray[5]),Double.toString(moneyArray[6]),Double.toString(moneyArray[7]),Double.toString(moneyArray[8]),Double.toString(moneyArray[9]),Double.toString(moneyArray[10]));
+        money.print();
     }
 
 
     public static void main(String[] args) {
         int th, oh, ft, tht, twt, t, f, o, ftc, tc, fc;
 
-        int cols = 11;
-        double[] money = new double[cols];
+        int financeCols = 11;
+        double[] money = new double[financeCols];
 
 
-        Scanner keybrd = new Scanner(System.in);
+        Scanner userInput = new Scanner(System.in);
         int choice = -1;
         do {
             printOwnersMenu();
-            choice = keybrd.nextInt();
+            choice = userInput.nextInt();
             switch (choice) {
                 case 1: {
                     System.out.println("[1] Cash in ");
                     System.out.println("[2] Cash out");
                     System.out.println("[3] Back");
-                    int choice1 = keybrd.nextInt();
-                    switch (choice1) {
+                    int cashInOutChoice = userInput.nextInt();
+                    switch (cashInOutChoice) {
                         case 1: {
 
                             System.out.println("---------------------------------------------------------------");
@@ -57,38 +62,38 @@ public class Storage {
                             System.out.println("N$ 200: ");
                             //type how much of the 200 notes you want//
                             //th stands for two hundred//
-                            th = keybrd.nextInt();
+                            th = userInput.nextInt();
 
                             System.out.println("N$ 100: ");
                             //oh stands for one hundred//
-                            oh = keybrd.nextInt();
+                            oh = userInput.nextInt();
 
                             System.out.println("N$ 50: ");
-                            ft = keybrd.nextInt();
+                            ft = userInput.nextInt();
 
                             System.out.println("N$ 30: ");
-                            tht = keybrd.nextInt();
+                            tht = userInput.nextInt();
 
                             System.out.println("N$ 20: ");
-                            twt = keybrd.nextInt();
+                            twt = userInput.nextInt();
 
                             System.out.println("N$ 10: ");
-                            t = keybrd.nextInt();
+                            t = userInput.nextInt();
 
                             System.out.println("N$ 5: ");
-                            f = keybrd.nextInt();
+                            f = userInput.nextInt();
 
                             System.out.println("N$ 1: ");
-                            o = keybrd.nextInt();
+                            o = userInput.nextInt();
 
                             System.out.println("50c: ");
-                            ftc = keybrd.nextInt();
+                            ftc = userInput.nextInt();
 
                             System.out.println("10c: ");
-                            tc = keybrd.nextInt();
+                            tc = userInput.nextInt();
 
                             System.out.println("5c: ");
-                            fc = keybrd.nextInt();
+                            fc = userInput.nextInt();
 
                             double thr = th * 200.00;
                             double ohr = oh * 100.00;
@@ -121,13 +126,13 @@ public class Storage {
 
 
                             if (result >= 0) {
-                                //cols is an arraysize//
-                                for (int i = 0; i < cols; i++) {
+                                //financeCols is an arraysize//
+                                for (int i = 0; i < financeCols; i++) {
                                     //newcash is put in money and then if another newcash is made it will add on the previous newcash in money//
                                     money[i] = money[i] + newcash[i];
                                 }
                                 //lets it appear in table format//
-                                printAllcash(newcash, cols);
+                                printAllcash(newcash, financeCols);
 
 
                                 System.out.println(" ");
@@ -157,37 +162,37 @@ public class Storage {
                             System.out.println("for example: " + "N$ 200: \n" + "2");
                             System.out.println("---------------------------------------------------------------");
                             System.out.println("N$ 200: ");
-                            th = keybrd.nextInt();
+                            th = userInput.nextInt();
 
                             System.out.println("N$ 100: ");
-                            oh = keybrd.nextInt();
+                            oh = userInput.nextInt();
 
                             System.out.println("N$ 50: ");
-                            ft = keybrd.nextInt();
+                            ft = userInput.nextInt();
 
                             System.out.println("N$ 30: ");
-                            tht = keybrd.nextInt();
+                            tht = userInput.nextInt();
 
                             System.out.println("N$ 20: ");
-                            twt = keybrd.nextInt();
+                            twt = userInput.nextInt();
 
                             System.out.println("N$ 10: ");
-                            t = keybrd.nextInt();
+                            t = userInput.nextInt();
 
                             System.out.println("N$ 5: ");
-                            f = keybrd.nextInt();
+                            f = userInput.nextInt();
 
                             System.out.println("N$ 1: ");
-                            o = keybrd.nextInt();
+                            o = userInput.nextInt();
 
                             System.out.println("50c: ");
-                            ftc = keybrd.nextInt();
+                            ftc = userInput.nextInt();
 
                             System.out.println("10c: ");
-                            tc = keybrd.nextInt();
+                            tc = userInput.nextInt();
 
                             System.out.println("5c: ");
-                            fc = keybrd.nextInt();
+                            fc = userInput.nextInt();
 
                             double thr = th * 200.00;
                             double ohr = oh * 100.00;
@@ -217,7 +222,7 @@ public class Storage {
                             double[] newcash = {thr, ohr, ftr, thtr, twtr, tr, fr, or, ftcr, tcr, fcr};
 
 
-                            for (int i = 0; i < cols; i++) {
+                            for (int i = 0; i < financeCols; i++) {
 
                                 if (money[i] - newcash[i] < 0) {
                                     System.out.println("");
@@ -232,7 +237,7 @@ public class Storage {
                                     money[i] = money[i] - newcash[i];
 
                             }
-                                    printAllcash(newcash, cols);
+                                    printAllcash(newcash, financeCols);
 
 
                                     System.out.println(" ");
@@ -262,10 +267,10 @@ public class Storage {
                     int printChoice = 0;
                     do {
                         //prints all cash in table format//
-                        printAllcash(money, cols);
+                        printAllcash(money, financeCols);
 
                         System.out.println("[1] Go back");
-                        printChoice = keybrd.nextInt();
+                        printChoice = userInput.nextInt();
                     } while (printChoice != 1);
                     break;
 
@@ -273,7 +278,7 @@ public class Storage {
             }
         }
                 while (choice != 3) ;
-                keybrd.close();
+                userInput.close();
 
 
         }
