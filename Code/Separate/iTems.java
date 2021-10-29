@@ -1,5 +1,5 @@
 import java.util.*;
-public class iTemsB {
+public class iTems {
 
     public static int findItem(String[][] arr, String searchItem) {
         int indexOfItem = 0, id = 0;
@@ -255,7 +255,7 @@ public class iTemsB {
                 changed = (changed % 10) * 2;
                 numCash[10] = numCash[10] - fiveC;
             }
-            System.out.println("Your change is disbursed as follows: N$200 X " + tHundreds + "N$100 X " + hundreds + ",N$50 X" + fifties + ", N$30 X " + thirties + ", N$20 X " + twenties + ", N$10 X "  + tens + ", N$5 X " + fives + ", N$1 X " + ones + "50cents X " +fiftyC+ ", 10cents X "  + tenC + " and 5cents X " + fiveC);
+            System.out.println("Your change is disbursed as follows: N$200 X " + tHundreds + ", N$100 X " + hundreds + ", N$50 X" + fifties + ", N$30 X " + thirties + ", N$20 X " + twenties + ", N$10 X "  + tens + ", N$5 X " + fives + ", N$1 X " + ones + ", 50cents X " +fiftyC+ ", 10cents X "  + tenC + " and 5cents X " + fiveC);
 
 
             System.out.println("Sammy's Sweets");
