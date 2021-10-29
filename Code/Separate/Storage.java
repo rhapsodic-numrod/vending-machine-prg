@@ -35,6 +35,7 @@ public class Storage {
         int cols = 11;
         double[] money = new double[cols];
 
+
         Scanner keybrd = new Scanner(System.in);
         int choice = -1;
         do {
@@ -54,9 +55,12 @@ public class Storage {
                             System.out.println("for example: " + "N$ 200: \n" + "2");
                             System.out.println("---------------------------------------------------------------");
                             System.out.println("N$ 200: ");
+                            //type how much of the 200 notes you want//
+                            //th stands for two hundred//
                             th = keybrd.nextInt();
 
                             System.out.println("N$ 100: ");
+                            //oh stands for one hundred//
                             oh = keybrd.nextInt();
 
                             System.out.println("N$ 50: ");
@@ -116,16 +120,19 @@ public class Storage {
                             double[] newcash = {thr, ohr, ftr, thtr, twtr, tr, fr, or, ftcr, tcr, fcr};
 
 
-                            if (result > 0) {
+                            if (result >= 0) {
+                                //cols is an arraysize//
                                 for (int i = 0; i < cols; i++) {
+                                    //newcash is put in money and then if another newcash is made it will add on the previous newcash in money//
                                     money[i] = money[i] + newcash[i];
                                 }
-
+                                //lets it appear in table format//
                                 printAllcash(newcash, cols);
 
 
                                 System.out.println(" ");
                                 double sum = 0;
+                                //adds everything in the array newcash//
                                 for (double price : newcash) {
                                     sum += price;
                                 }
@@ -211,59 +218,34 @@ public class Storage {
 
 
                             for (int i = 0; i < cols; i++) {
-                                money[i] = money[i] - newcash[i];
+                                if (money[i] - newcash[i] < 0) {
+                                    System.out.println("");
+                                    System.out.println("Invalid amount please cash in enough money to be taken out!!");
+                                    System.out.println("");
+                                    System.exit(01);
+                                }
+                                //newcash is put in money and then if another newcash is made in cash out it will subtract on the previous newcash in money
+                                //which will show at the print all cash choice
+
+                                    money[i] = money[i] - newcash[i];
+
                             }
-                            if (thr <= 1001.00) {
-                                System.out.println("\nInvalid amount taken there should be N$ 1000 left of N$ 200 notes in the machine!!!\n");
-                                break;
-                            } else if (ohr <= 501.00) {
-                                System.out.println("\nInvalid amount taken there should be N$ 500 left of N$ 100 notes in the machine!!!\n");
-                            break;
-                            } else if (ftr <= 401.00) {
-                                System.out.println("\nInvalid amount taken there should be N$ 400 left of N$ 50 notes in the machine!!!\n");
-                                break;
-                            } else if (thtr <= 401.00) {
-                                System.out.println("\nInvalid amount taken there should be N$ 400 left of N$ 30 notes in the machine!!!\n");
-                                break;
-                            } else if (twtr <= 401.00) {
-                                System.out.println("\nInvalid amount taken there should be N$ 400 left of N$ 20 notes in the machine!!!\n");
-                                break;
-                            } else if (tr <= 201.00) {
-                                System.out.println("\nInvalid amount taken there should be N$ 200 left of N$ 10 notes in the machine!!!\n");
-                                break;
-                            } else if (fr <= 101.00) {
-                                System.out.println("\nInvalid amount taken there should be N$ 100 left of N$ 5 coins in the machine!!!\n");
-                                break;
-                            } else if (or <= 51.00) {
-                                System.out.println("\nInvalid amount taken there should be N$ 50 left of N$ 1 coins in the machine!!!\n");
-                                break;
-                            } else if (ftcr <= 26.00) {
-                                System.out.println("\nInvalid amount taken there should be N$ 25 left of 50c coins in the machine!!!\n");
-                                break;
-                            } else if (tcr <= 26.00) {
-                                System.out.println("\nInvalid amount taken there should be N$ 25 left of 10c coins in the machine!!!\n");
-                                break;
-                            } else if (fcr <= 19.00) {
-                                System.out.println("\nInvalid amount taken there should be N$ 18 left in of 5c coins the machine!!!\n");
-                                break;
-                            } else {
+                                    printAllcash(newcash, cols);
 
 
-                                printAllcash(newcash, cols);
+                                    System.out.println(" ");
+                                    double sum = 0;
+                                    for (double price : newcash) {
+                                        sum += price;
+                                    }
 
-
-                                System.out.println(" ");
-                                double sum = 0;
-                                for (double price : newcash) {
-                                    sum += price;
+                                    System.out.printf("Amount : " + "%.2f", sum);
+                                    System.out.println(" ");
+                                    System.out.println("Cashed out successfull ! !");
+                                    System.out.println(" ");
                                 }
 
-                                System.out.printf("Amount : " + "%.2f", sum);
-                                System.out.println(" ");
-                                System.out.println("Cashed out successfull ! !");
-                                System.out.println(" ");
-                            }
-                        }
+
 
 
                         break;
@@ -277,7 +259,7 @@ public class Storage {
                     System.out.println("print all");
                     int printChoice = 0;
                     do {
-
+                        //prints all cash in table format//
                         printAllcash(money, cols);
 
                         System.out.println("[1] Go back");
