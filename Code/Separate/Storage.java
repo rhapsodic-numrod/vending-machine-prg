@@ -218,11 +218,13 @@ public class Storage {
 
 
                             for (int i = 0; i < cols; i++) {
+
                                 if (money[i] - newcash[i] < 0) {
                                     System.out.println("");
                                     System.out.println("Invalid amount please cash in enough money to be taken out!!");
                                     System.out.println("");
                                     System.exit(01);
+                                    //tried using break but it didn't work so i used System.exit
                                 }
                                 //newcash is put in money and then if another newcash is made in cash out it will subtract on the previous newcash in money
                                 //which will show at the print all cash choice
